@@ -4,10 +4,49 @@
 - [Recipes](#recipes)
     - Packages
         - Libraries
+            + [apg.py](#apg.py)
             + [sqlite_lib.py](#sqlite_lib.py)
+- [Scripts](#scripts)
+    + de-duplicator.py
 
 ## Recipes
 ### Libraries
+#### apg.py
+- Simple Android project file structure
+    ```python
+    import os
+    import sys
+    from pypkgs.libraries import apg
+
+    def main():
+        # To initialize for a Windows environment
+        apgEnv = apg.APGWindows()
+
+        # To initialize for a Linux environment
+        apgEnv = apg.APGLinux()
+
+        # To initialize the Generator
+        apgGen = apg.AndroidProjectGenerator()
+
+        # To setup environment
+        apgEnv.setup_Env()
+        
+        # To download dependencies
+        apgGen.dl_Dependencies()
+
+        ## Generate template project structure
+        apgGen.generate_template_Project 
+
+        ## Populate project source files
+        apgGen.populate_template_Project
+
+        # Create gradle files
+        apgGen.populate_build_Files
+
+    if __name__ == "__main__":
+        main()
+    ```
+
 #### sqlite_lib.py
 - Database C.R.U.D operations
     ```python
@@ -145,4 +184,17 @@
         main()
     ```
 
+## Scripts
+- de-duplicator
+    - Synopsis/Syntax
+        ```console
+        python -m pypkgs.scripts.de-duplicator {options} <arguments>
+        ```
+    - Parameters
+        - Positionals
+            1. Source filename
+            2. dataset source : Specify this to indicate the URL's domain source; This is used to split and remove unnessary queries from links
+                - yt | youtube : For URLs that uses youtube's domain (i.e. youtube.com/...?=search-queries)
+                - none : Ignore; just remove duplicates and dont truncate/split
+        - Optionals
 
