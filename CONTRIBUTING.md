@@ -21,8 +21,23 @@
             ```
 + Do not force merge directly to the main branch
 
-## Distribution and Packaging
+## Setup
 ### Pre-Requisites
+- Clone repository
+    ```console
+    git clone https://github.com/Thanatisia/python-pkgs
+    ```
+
+- Change directory into repository
+    ```console
+    cd python-pkgs
+    ```
+
+- Initialize submodules
+    ```console
+    git submodule update --init
+    ```
+
 - (Optional) Create Virtual Environments for isolation testing/usage
     - Create the Virtual Environment container
         ```console
@@ -43,6 +58,7 @@
     cd [project-root-directory]
     ```
 
+## Distribution and Packaging
 ### Development and Testing
 - Install framework using pip
     - Locally as development mode

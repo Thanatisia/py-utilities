@@ -61,3 +61,11 @@
         + Updated build steps: Fixed step to clone directly from github repository
         + Added the target branch to open a pull request to in the case you want to contribute
 
+#### 2127H
+- New
+    - Added new file '.gitmodules' for all submodules
+    - Added new submodule link for framework package 'https://github.com/Thanatisia/distinstall-python'
+
+- Updates
+    - Updated document 'CONTRIBUTING.md' with new pre-requisites: git submodules
+
