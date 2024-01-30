@@ -1,0 +1,3 @@
+[submodule "pypkgs/frameworks/distinstall-python"]
+	path = pypkgs/frameworks/distinstall-python
+	url = https://github.com/Thanatisia/distinstall-python
