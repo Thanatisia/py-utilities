@@ -34,43 +34,80 @@ def sanitizer(target_list:list):
     # Output
     return sanitized_list
 
-def find_missing(source_list, difference_list):
+def find_differences(src_list, target_list):
     """
     Compare the sources list to the target 'difference' list and check if there are any missing elements that are found in the sources (primary) list but not in the difference (target) list
     by ordering the source list according to the difference list (List that you want to find the missing elements from) based on the element 'keys' order
 
     :: Params
-    - source_list : The primary list that you want to use to cross-reference the missing elements from the difference list
+    - src_list : The primary list that you want to use to cross-reference the missing elements from the difference list
         Type: List
 
-    - difference_list : The secondary list you want to check if elements are missing from
+    - target_list : The target list you want to cross-reference with the source list
         Type: List
     """
     # Initialize Variables
-    res_list = [] # Result list to hold all values
+    new_list = [] # The new source list with duplicates removed
+    difference = [] # List of duplicates found in the sources list
+    src_element_Map = {} # Dictionary containing count of items
 
-    # Convert the leader list into dictionary by using the list elements as keys to follow
-    src_dict = dict.fromkeys(source_list) 
+    # Loop through source list and 
+    # map out number of each elements in the list
+    for i in range(len(src_list)):
+        # Get current element
+        curr_element = src_list[i]
 
-    # Convert the follower list into dictionary using the list elements as keys to follow
-    diff_dict = dict.fromkeys(difference_list)
+        # Check if current element is in the new list
+        if curr_element not in target_list:
+            # Element not in the target comparison list
 
-    # Loop through all keys of the leader dictionary
-    for curr_key in src_dict:
-        # Check if the current leader key is in the current follower dictionary
-        if curr_key not in diff_dict:
-            # Current key not in the current follower dictionary = Missing
-            # Append the missing key into results list
-            res_list.append(curr_key)
+            # Append differences
+            difference.append(curr_element)
 
-    # Convert list into dictionary using the list elements as keys to remove duplicates
-    result_dict = dict.fromkeys(res_list)
+    # Output
+    return difference
 
-    # Retrieve the keys only and convert into the results list
-    res_list = list(result_dict.keys())
+def find_duplicates(src_list):
+    """
+    Check for any duplicates in the source list and returns the de-duplicated list, and the duplicates list
 
-    # Return list
-    return res_list
+    :: Params
+    - src_list : The primary list that you want to use to cross-reference the missing elements from the difference list
+        Type: List
+    """
+    # Initialize Variables
+    new_list = [] # The new source list with duplicates removed
+    duplicates = [] # List of duplicates found in the sources list
+    src_element_Map = {} # Dictionary containing count of items
+
+    # Loop through source list and 
+    # map out number of each elements in the list
+    for i in range(len(src_list)):
+        # Get current element
+        curr_element = src_list[i]
+
+        # Check if current element is in the new list
+        if curr_element not in src_element_Map:
+            # Element not in counter dictionary/map
+
+            # Append into new list
+            new_list.append(curr_element)
+
+            # Map new element with default counter in key-value
+            src_element_Map[curr_element] = 0
+
+        # Increment key counter
+        src_element_Map[curr_element] += 1
+
+    # Loop through key-value mapping and 
+    # search for elements with more than 1 count
+    for k,v in src_element_Map.items():
+        if v > 1:
+            # Append into duplicates list
+            duplicates.append(k)
+
+    # Output
+    return [new_list, duplicates]
 
 def order_list(order_leader_list, order_follower_list):
     """
@@ -329,7 +366,7 @@ def main():
             file_contents = order_list(original_file_contents, file_contents)
 
             # Check if there are differences
-            differences = find_missing(original_file_contents, file_contents)
+            differences = find_differences(original_file_contents, file_contents)
             if len(differences) > 0:
                 print("There are elements missing:")
                 for i in range(len(differences)):
@@ -339,6 +376,10 @@ def main():
 
             # Process through file source
             match file_src:
+                case "none":
+                    """
+                    No Split
+                    """
                 case "youtube" | "yt":
                     """
                     Youtube URL: truncate/split link by the '?' delimiter
@@ -363,6 +404,10 @@ def main():
                 case _:
                     print("Invalid file source provided: {}".format(file_src))
                     exit(1)
+
+            # Find duplicates that was in the original list
+            duplicates_removed, duplicates = find_duplicates(original_file_contents)
+            print("Duplicates: {}".format(duplicates))
 
             # Write new file contents into a file
             output_file_name = "{}-new.{}".format(file_name_without_extension, file_ext)
