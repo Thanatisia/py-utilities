@@ -43,5 +43,15 @@
     - Added new source file '__init__.py' in 'src/packages/scripts' to initialize the package as importable
 
 - Updates
-    modified:   src/packages/scripts/de-duplicator.p
+    - Updated script 'de-duplicator.py'
+
+
+#### 2055H
+- Updates
+    - Migrated 'python-pkgs' from 'src/' pypkgs to the root directory
+        - Bug: setuptools unable to use the package without explicitly calling 'src.package-name' when the package is in a src directory layout
+    - Updated USAGE.md
+        - Added instructions to libraries and scripts
+    - Updated setup.py
+        - Converted 'src/package' => 'pypkgs'
 
