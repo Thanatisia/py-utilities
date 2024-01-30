@@ -7,7 +7,7 @@
 ## Rules
 ### Open Source Contribution
 - Create a fork/branch to your contribution
-- Open Pull Request to request to merge your updates
+- Open Pull Request to request to merge your updates into the 'development' branch
     - Please specify your contribution details in the following in your Pull Request
         + Title: `[category] : [summary]`
         - Body:
@@ -50,7 +50,7 @@
         pip install .
         ```
 
-### Building
+### Build
 #### Using setuptools
 - Build/Compile static files
     - Explanation
@@ -88,8 +88,20 @@
         ```
     - Install from GtiHub
         ```console
-        pip install https://github.com/Thanatisia/python-pkgs{@[branch-tag-name]}
+        pip install git+https://github.com/Thanatisia/python-pkgs{@[branch-tag-name]}
         ```
+
+### Confirmation
+- Validate package is installed
+    ```console
+    pip freeze list
+    ```
+
+### Post-Installation
+- Uninstall package
+    ```console
+    pip uninstall [package-name]
+    ```
 
 ## Resources
 

@@ -55,3 +55,9 @@
     - Updated setup.py
         - Converted 'src/package' => 'pypkgs'
 
+#### 2104H
+- Updated
+    - Updated 'CONTRIBUTING.md'
+        + Updated build steps: Fixed step to clone directly from github repository
+        + Added the target branch to open a pull request to in the case you want to contribute
+
