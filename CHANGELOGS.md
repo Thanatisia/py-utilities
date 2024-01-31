@@ -3,7 +3,7 @@
 ## Table of Contents
 + [2023-12-21](#2023-12-21)
 + [2024-01-05](#2024-01-05)
-+ [2024-01-30](#2024-01-30)
++ [2024-01-30 - v0.1.0](#2024-01-30)
 + [2024-01-31](#2024-01-31)
 
 ## Logs
@@ -63,6 +63,8 @@
         + Added the target branch to open a pull request to in the case you want to contribute
 
 #### 2127H
++ Updated to v0.1.0
+
 - New
     - Added new file '.gitmodules' for all submodules
     - Added new submodule link for framework package 'https://github.com/Thanatisia/distinstall-python'
