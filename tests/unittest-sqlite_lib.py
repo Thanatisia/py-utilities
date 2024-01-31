@@ -1,6 +1,6 @@
 import os
 import sys
-import src.packages.libraries.sqlite_lib as sqlite_lib
+import pypkgs.libraries.sqlite_lib as sqlite_lib
 
 def test_sqlite_lib():
     """

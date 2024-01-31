@@ -186,6 +186,9 @@
 
 ## Scripts
 - de-duplicator
+    - Setup
+        - Dependencies
+        - Pre-Requisites
     - Synopsis/Syntax
         ```console
         python -m pypkgs.scripts.de-duplicator {options} <arguments>
@@ -197,4 +200,41 @@
                 - yt | youtube : For URLs that uses youtube's domain (i.e. youtube.com/...?=search-queries)
                 - none : Ignore; just remove duplicates and dont truncate/split
         - Optionals
+
+- apg-generate
+    - Information
+        - Notes
+            - Please refer to the main repository that holds this script [Thanatisia/android-project-generator python](https://github.com/Thanatisia/android-project-generator/tree/main/app/languages/python) for the latest updates
+    - Setup
+        - Dependencies
+            - android-sdk
+                + cmdline-tools
+            + gradle
+        - Pre-Requisites
+            - Set environment variables in your shell
+                - Linux
+                    + `ANDROID_HOME="/path/to/android-sdk"`
+                    + `ANDROID_USER_HOME="/path/to/user/home/.config/android"`
+                    + `ANDROID_EMULATOR_HOME="[ANDROID_USER_HOME]/emulator"`
+                    + `ANDROID_AVD_HOME="[ANDROID_USER_HOME]/avd"`
+                    + `PATH+="[ANDROID_EMULATOR_HOME]:[ANDROID_HOME]/tools:[ANDROID_HOME]/platform-tools:[ANDROID_HOME]/cmdline-tools/latest/bin:"`
+                - Windows
+                    + `SET ANDROID_HOME="\path\to\android\sdk\root"`
+                    + `SET ANDROID_USER_HOME="\path\to\user\home\.config\android"`
+                    + `SET ANDROID_EMULATOR_HOME="[ANDROID_USER_HOME]\emulator"`
+                    + `SET ANDROID_AVD_HOME="[ANDROID_USER_HOME]\avd"`
+                    + `SET PATH="%PATH%;[ANDROID_EMULATOR_HOME];[ANDROID_HOME]\tools;[ANDROID_HOME]\platform-tools;[ANDROID_HOME]\cmdline-tools\latest\bin;"`
+    - Synopsis/Syntax
+        ```console
+        python -m pypkgs.scripts.apg-generate {options} <arguments>
+        ```
+    - Parameters
+        - Positionals
+        - Optionals
+    - Usage
+        - Display help
+            ```console
+            python -m pypkgs.scripts.apg-generate --help
+            ```
+
 
