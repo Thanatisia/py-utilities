@@ -3,7 +3,8 @@
 ## Table of Contents
 + [2023-12-21](#2023-12-21)
 + [2024-01-05](#2024-01-05)
-+ [2024-01-30](#2024-01-30)
++ [2024-01-30 - v0.1.0](#2024-01-30)
++ [2024-01-31](#2024-01-31)
 
 ## Logs
 ### 2023-12-21
@@ -62,10 +63,27 @@
         + Added the target branch to open a pull request to in the case you want to contribute
 
 #### 2127H
++ Updated to v0.1.0
+
 - New
     - Added new file '.gitmodules' for all submodules
     - Added new submodule link for framework package 'https://github.com/Thanatisia/distinstall-python'
 
 - Updates
     - Updated document 'CONTRIBUTING.md' with new pre-requisites: git submodules
+
+### 2024-01-31
+#### 1243H
+- New
+    - Added new directory 'tests' for storing all unit tests
+    - Added new script 'apg-generate.py'
+        + Uses the AndroidProjectGenerator (apg) library as a dependency to work as a working android project file structure generator
+        + You can use this as a baseline on how to use the apg library
+
+- Updates
+    - Updated 'USAGE.md'
+        + Added documentations for new script 'apg-generate.py'
+    - Moved 'unittest.py' from root to 'tests/'
+        + Modified unittest.py to use pypkgs instead of static import
+        + Renamed 'unittest.py' to 'unittest-sqlite_lib.py'
 
