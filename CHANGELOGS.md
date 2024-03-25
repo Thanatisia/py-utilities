@@ -5,6 +5,7 @@
 + [2024-01-05](#2024-01-05)
 + [2024-01-30 - v0.1.0](#2024-01-30)
 + [2024-01-31](#2024-01-31)
++ [2024-03-25](#2024-03-25)
 
 ## Logs
 ### 2023-12-21
@@ -86,4 +87,13 @@
     - Moved 'unittest.py' from root to 'tests/'
         + Modified unittest.py to use pypkgs instead of static import
         + Renamed 'unittest.py' to 'unittest-sqlite_lib.py'
+
+### 2024-03-25
+#### 2029H
+- New
+    + Added new library 'mkparser.py' referenced from the makefile parser repository [Thanatisia/makefile-parser-python](https://github.com/Thanatisia/makefile-parser-python)
+
+- Updates
+    - Updated document 'USAGE.md'
+        + Added reference to USAGE.md of the repository
 
