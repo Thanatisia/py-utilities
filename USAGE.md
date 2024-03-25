@@ -5,6 +5,7 @@
     - Packages
         - Libraries
             + [apg.py](#apg.py)
+            + [mkparser.py](https://github.com/Thanatisia/makefile-parser-python/blob/main/USAGE.md)
             + [sqlite_lib.py](#sqlite_lib.py)
 - [Scripts](#scripts)
     + de-duplicator.py
