@@ -6,7 +6,7 @@
 + A python one-stop-shop mono-repo containing various useful python utilities, packages/frameworks/libraries that you can just install and use
 
 ### Project
-+ Current Version: v0.2.1
++ Current Version: v0.2.2
 
 ## Setup
 ### Dependencies

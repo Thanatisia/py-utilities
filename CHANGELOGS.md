@@ -187,3 +187,27 @@
         + Fixed pyproject.toml dependencies list
         + Updated to version v0.2.1
 
+#### 1932H
+- Updates
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Removed dependencies to make it less bloated
+
+#### 1943H
+- Updates
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Removed dependencies to make it less bloated
+
+#### 1952H
++ Version: v0.2.2
+
+- Version Changes
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Removed dependencies to make it less bloated
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.2
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Removed dependencies to make it less bloated
+        + Updated to version v0.2.2
+
