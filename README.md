@@ -3,12 +3,7 @@
 ## Information
 
 ### Background Summary
-- An all-in-one package containing a collection of self-implemented Python packages/frameworks/libraries (the following will collectively be known as 'library') such that
-    + you can add this into a project as a submodule and you can import the libraries directly
-
-### Features
-- Follows "Best Practice" python framework project structure (to the best of my ability)
-    - Easy to modify
++ A python one-stop-shop mono-repo containing various useful python utilities, packages/frameworks/libraries that you can just install and use
 
 ## Setup
 ### Dependencies
@@ -16,6 +11,49 @@
 + pip
 
 ### Pre-Requisites
+- Generate Python Virtual Environment
+    - Create Virtual Environment
+        ```bash
+        python3 -m venv [virtual-environment-name]
+        ```
+    - Chroot into Virtual Environment
+        - Linux
+            ```bash
+            . [virtual-environment-name]/bin/activate
+            ```
+        - Windows
+            ```bash
+            .\[virtual-environment-name]\Scripts\activate
+            ```
+
+### Installing
+- Using python pip
+    - Install git repository
+        ```bash
+        python3 -m pip install git+https://github.com/Thanatisia/py-utilities{@[branch-tag-name]}
+        ```
+
+- Manually via cloning
+    - Clone git repository
+        ```bash
+        git clone https://github.com/Thanatisia/py-utilities
+        ```
+    - Change directory into project root
+        ```bash
+        cd py-utilities
+        ```
+    - (Optional) Install python dependencies
+        ```bash
+        python3 -m pip install -Ur requirements.txt
+        ```
+    - Install package as development mode
+        ```bash
+        pip install .
+        ```
+    - (Optional) Uninstall package
+        ```bash
+        pip uninstall py-utilities
+        ```
 
 ### Embedding library in your own project
 - Change directory into your project root containing the git folder
@@ -25,7 +63,7 @@
 
 - Importing as a git submodule
     ```console
-    git submodule add https://github.com/Thanatisia/python-pkgs
+    git submodule add https://github.com/Thanatisia/py-utilities
     ```
 
 ### Following usage setup
@@ -40,12 +78,14 @@
 ### Project Structure
 - root/
     - src/
-        - packages/
+        - pyutils/
             - frameworks/ : Place all frameworks and multi-library files here
             - libraries/  : Place all standalone libraries/modules and classes here
+            - scripts/    : Place all scripts/CLI utilities here
 
 ## Resources
 
 ## References
 
 ## Remarks
+

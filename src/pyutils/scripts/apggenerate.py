@@ -5,7 +5,7 @@ streamline the setting up process of your host system for Android application de
 import os
 import sys
 import platform
-from pypkgs.libraries.apg import AndroidProjectGenerator, APGLinux, APGWindows
+from pyutils.libraries.apg import AndroidProjectGenerator, APGLinux, APGWindows
 
 def arg_remove(argv, values):
     """
@@ -355,12 +355,13 @@ def main():
     """
     Run Generator
     """
+    init()
+    setup()
+
     print(flags)
     process_cli_args(flags)
 
 if __name__ == "__main__":
-    init()
-    setup()
     main()
 
 

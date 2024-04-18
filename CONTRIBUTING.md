@@ -25,12 +25,12 @@
 ### Pre-Requisites
 - Clone repository
     ```console
-    git clone https://github.com/Thanatisia/python-pkgs
+    git clone https://github.com/Thanatisia/py-utilities
     ```
 
 - Change directory into repository
     ```console
-    cd python-pkgs
+    cd py-utilities
     ```
 
 - Initialize submodules
@@ -98,13 +98,9 @@
             ```
 
 - Remote installation
-    - Install from PyPI (WIP)
-        ```console
-        pip install pypkgs
-        ```
     - Install from GtiHub
         ```console
-        pip install git+https://github.com/Thanatisia/python-pkgs{@[branch-tag-name]}
+        pip install git+https://github.com/Thanatisia/py-utilities{@[branch-tag-name]}
         ```
 
 ### Confirmation
