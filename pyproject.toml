@@ -38,7 +38,7 @@ classifiers = [
 dependencies = [
     # List your dependencies here
     ## Pip Packages
-    "asciinema"
+    "asciinema",
     ## Git Packages
     "android-project-generator@git+https://github.com/Thanatisia/android-project-generator#subdirectory=app/languages/python&branch=main",
     "distinstall-python@git+https://github.com/Thanatisia/distinstall-python",

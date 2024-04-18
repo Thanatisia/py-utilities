@@ -164,3 +164,8 @@
     - Updated document 'pyproject.toml'
         + Testing fixing of dependencies
 
+#### 1912H
+- Updates
+    - Updated python packaging configuration file
+        + Fixed dependencies list
+
