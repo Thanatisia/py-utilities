@@ -192,3 +192,8 @@
     - Updated python packaging configuration file 'pyproject.toml'
         + Removed dependencies to make it less bloated
 
+#### 1943H
+- Updates
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Removed dependencies to make it less bloated
+
