@@ -23,7 +23,7 @@ def display_help():
 Help:
 
 - Synopsis/Syntax
-    {} {options} <arguments> [actions]
+    {} [options] <arguments> [actions]
 
 - Parameters
     - With Arguments
@@ -56,7 +56,7 @@ Help:
             python asciinema-record-gif.py --asciinema-opts "options here ..."
         - into asciinema-agg directly
             python asciinema-record-gif.py --asciinema-agg-opts "options here ..."
-    """.format(exec)
+    """.format(exec_name)
     print(msg)
 
 def display_system_version():
@@ -67,7 +67,7 @@ def display_system_version():
 System Version:
     Executable: {}
     Version   : {}
-    """.format(exec, sys_version)
+    """.format(exec_name, sys_version)
     print(msg)
 
 """
@@ -77,10 +77,12 @@ def init():
     """
     Initialize System Global Information
     """
-    global sys_version, exec, argv, argc
+    global sys_version, exec, exec_path, exec_name, argv, argc
 
-    sys_version = "v0.1.0"
+    sys_version = "v0.1.1"
     exec = sys.argv[0]
+    exec_path = os.path.split(exec)[0]
+    exec_name = os.path.split(exec)[1]
     argv = sys.argv[1:]
     argc = len(argv)
 
@@ -340,6 +342,22 @@ def print_dict(dict_obj):
         # Print
         print("{} : {}\n".format(k, v))
 
+def merge_dictionary(dict_1, dict_2):
+    """
+    Merge 2 dictionaries together
+    """
+    # Initialize Variables
+    merged_dictionary = {}
+
+    # Merge optionals with arguments and flags together
+    for k,v in dict_1.items():
+        merged_dictionary[k] = v
+    for k,v in dict_2.items():
+        merged_dictionary[k] = v
+
+    # Output/Return
+    return merged_dictionary
+
 def main():
     init()
 
@@ -353,27 +371,36 @@ def main():
     opts_complete = opts["optionals"]
     opt_with_arguments = opts_complete["with-arguments"]
     opt_Flags = opts_complete["flags"]
-    # print(opts)
+
+    # Merge optionals with arguments and flags together
+    merged_dictionary = merge_dictionary(opt_with_arguments, opt_Flags)
+
+    # print(merged_dictionary)
 
     ## Process Optionals
-    for k,v in opts.items():
+    for k,v in merged_dictionary.items():
         # Switch case current key-value
         match k:
             case "help":
                 ## Display help message
-                display_help()
+                if v == 1:
+                    display_help()
             case "version":
                 ## Display system version information
-                display_system_version()
+                if v == 1:
+                    display_system_version()
             case "print-opts-all":
                 ## Print 'opts' associative array containing both flags and options with arguments
-                print_dict(opts)
+                if v == 1:
+                    print_dict(opts)
             case "print-opts-flags":
                 ## Print 'opt_Flags' associative array containing flags
-                print_dict(opt_Flags)
+                if v == 1:
+                    print_dict(opt_Flags)
             case "print-opts-with-args":
                 ## Print 'opt_with_arguments' associative array containg options with arguments
-                print_dict(opt_with_arguments)
+                if v == 1:
+                    print_dict(opt_with_arguments)
             #case _:
             #    # Invalid option
             #    pprint_warning "Invalid key provided: $key"

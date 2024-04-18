@@ -314,6 +314,6 @@
         asciinema-util \
             --debug \
             record --output-terminal-rec-filename output.cast --asciinema-opts '--overwrite' -c "commands arguments values" \
-            convert --theme solarized-light --input-terminal-rec-filename output.cast --output-animation-filename output.gif  --asciinema-agg-opts '--cols 71 --rows 13 --font-size 16' \
+            convert --theme solarized-light --input-terminal-rec-filename output.cast --output-animation-filename output.gif  --asciinema-agg-opts '--cols 71 --rows 13 --font-size 16'
         ```
 

@@ -211,3 +211,47 @@
         + Removed dependencies to make it less bloated
         + Updated to version v0.2.2
 
+#### 2033H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.1
+        + Fixing bug where optional arguments (flags) are not being recognized
+        + Refactoring to be more efficient
+
+#### 2037H
+- Updates
+    - Updated document 'USAGE.md'
+        + Cleaned up/Removed remanent backslash
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Merged variables 'opt_with_arguments' and 'opt_Flags' together 
+        + Replaced 'opt_with_Flags' with 'merged_dictionary' so that the iterator is going through every single optional arguments, not just flags
+
+#### 2043H
++ Version: v0.2.3
+
+- Version Changes
+    - General Changes
+        + Updated version of 'asciinemwrapper.py' in 'src/pyutils/scripts' to v0.1.1
+    - Bug Fixes
+        - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+            + Fixed bug where the optional arguments are not being processed
+    - Feature change/additions
+        - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+            + Merged optional arguments with value and flags together and 
+            + Replaced key-value for loop with the merged dictionary
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.3
+    - Updated document 'USAGE.md'
+        + Cleaned up/Removed remanent backslash
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated to version v0.2.3
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.1
+        + Fixing bug where optional arguments (flags) are not being recognized
+        + Refactoring to be more efficient
+        + Merged variables 'opt_with_arguments' and 'opt_Flags' together 
+        + Replaced 'opt_with_Flags' with 'merged_dictionary' so that the iterator is going through every single optional arguments, not just flags
+        + Cleaned up and removed debug prints
+
