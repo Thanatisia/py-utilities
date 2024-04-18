@@ -211,3 +211,10 @@
         + Removed dependencies to make it less bloated
         + Updated to version v0.2.2
 
+#### 2033H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.1
+        + Fixing bug where optional arguments (flags) are not being recognized
+        + Refactoring to be more efficient
+
