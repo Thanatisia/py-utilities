@@ -43,10 +43,10 @@ dependencies = [
     "android-project-generator@git+https://github.com/Thanatisia/android-project-generator#subdirectory=app/languages/python&branch=main",
     "distinstall-python@git+https://github.com/Thanatisia/distinstall-python",
     "mkparse@git+https://github.com/Thanatisia/makefile-parser-python",
-    "bpm@git+https://github.com/Thanatisia/bpm",
-    "ghutils@git+https://github.com/Thanatisia/gh-utils",
-    "yt-scripts@git+https://github.com/Thanatisia/py-webscraper-yt",
-    "py-reimplementations@git+https://github.com/Thanatisia/py-reimplementations"
+    # "bpm@git+https://github.com/Thanatisia/bpm",
+    # "ghutils@git+https://github.com/Thanatisia/gh-utils",
+    # "yt-scripts@git+https://github.com/Thanatisia/py-webscraper-yt",
+    # "py-reimplementations@git+https://github.com/Thanatisia/py-reimplementations"
 ]
 
 [project.scripts]
