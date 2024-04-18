@@ -375,7 +375,7 @@ def main():
     # Merge optionals with arguments and flags together
     merged_dictionary = merge_dictionary(opt_with_arguments, opt_Flags)
 
-    print(merged_dictionary)
+    # print(merged_dictionary)
 
     ## Process Optionals
     for k,v in merged_dictionary.items():
