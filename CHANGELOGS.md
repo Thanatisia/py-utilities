@@ -155,3 +155,12 @@
         + Replaced package import 'pypkgs' => 'pyutils'
         + Moved commands from '__name__ == "__main__".py' to 'main()'
 
+#### 1451H
+- New
+    - Added folder 'docs' for storing documentations
+        + Added document 'scripts.md' housing a list of all documentations
+
+- Updates
+    - Updated document 'pyproject.toml'
+        + Testing fixing of dependencies
+
