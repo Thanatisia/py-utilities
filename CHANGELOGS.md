@@ -155,3 +155,35 @@
         + Replaced package import 'pypkgs' => 'pyutils'
         + Moved commands from '__name__ == "__main__".py' to 'main()'
 
+#### 1451H
+- New
+    - Added folder 'docs' for storing documentations
+        + Added document 'scripts.md' housing a list of all documentations
+
+- Updates
+    - Updated document 'pyproject.toml'
+        + Testing fixing of dependencies
+
+#### 1912H
+- Updates
+    - Updated python packaging configuration file
+        + Fixed dependencies list
+
+#### 1916H
++ Version: v0.2.1
+
+- Version Changes
+    - Bug Fixes
+        + Fixed pyproject.toml dependencies list
+
+- New
+    - Added folder 'docs' for storing documentations
+        + Added document 'scripts.md' housing a list of all documentations
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.1
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Fixed pyproject.toml dependencies list
+        + Updated to version v0.2.1
+
