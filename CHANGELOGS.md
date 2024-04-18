@@ -218,3 +218,11 @@
         + Fixing bug where optional arguments (flags) are not being recognized
         + Refactoring to be more efficient
 
+#### 2037H
+- Updates
+    - Updated document 'USAGE.md'
+        + Cleaned up/Removed remanent backslash
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Merged variables 'opt_with_arguments' and 'opt_Flags' together 
+        + Replaced 'opt_with_Flags' with 'merged_dictionary' so that the iterator is going through every single optional arguments, not just flags
+

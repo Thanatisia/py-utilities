@@ -378,7 +378,7 @@ def main():
     print(merged_dictionary)
 
     ## Process Optionals
-    for k,v in opt_Flags.items():
+    for k,v in merged_dictionary.items():
         # Switch case current key-value
         match k:
             case "help":
