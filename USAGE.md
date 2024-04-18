@@ -4,20 +4,22 @@
 - [Recipes](#recipes)
     - Packages
         - Libraries
-            + [apg.py](#apg.py)
-            + [mkparser.py](https://github.com/Thanatisia/makefile-parser-python/blob/main/USAGE.md)
-            + [sqlite_lib.py](#sqlite_lib.py)
+            + [apg](#apg)
+            + [mkparser](https://github.com/Thanatisia/makefile-parser-python/blob/main/USAGE.md)
+            + [sqlite_lib](#sqlite_lib)
 - [Scripts](#scripts)
-    + de-duplicator.py
+    + de-duplicator
+    + apg-generate
+    + asciinema-util
 
 ## Recipes
 ### Libraries
-#### apg.py
+#### apg
 - Simple Android project file structure
     ```python
     import os
     import sys
-    from pypkgs.libraries import apg
+    from pyutils.libraries import apg
 
     def main():
         # To initialize for a Windows environment
@@ -48,7 +50,7 @@
         main()
     ```
 
-#### sqlite_lib.py
+#### sqlite_lib
 - Database C.R.U.D operations
     ```python
     import os
@@ -186,56 +188,132 @@
     ```
 
 ## Scripts
-- de-duplicator
-    - Setup
-        - Dependencies
-        - Pre-Requisites
-    - Synopsis/Syntax
-        ```console
-        python -m pypkgs.scripts.de-duplicator {options} <arguments>
-        ```
-    - Parameters
-        - Positionals
-            1. Source filename
-            2. dataset source : Specify this to indicate the URL's domain source; This is used to split and remove unnessary queries from links
-                - yt | youtube : For URLs that uses youtube's domain (i.e. youtube.com/...?=search-queries)
-                - none : Ignore; just remove duplicates and dont truncate/split
-        - Optionals
 
-- apg-generate
-    - Information
-        - Notes
-            - Please refer to the main repository that holds this script [Thanatisia/android-project-generator python](https://github.com/Thanatisia/android-project-generator/tree/main/app/languages/python) for the latest updates
-    - Setup
-        - Dependencies
-            - android-sdk
-                + cmdline-tools
-            + gradle
-        - Pre-Requisites
-            - Set environment variables in your shell
-                - Linux
-                    + `ANDROID_HOME="/path/to/android-sdk"`
-                    + `ANDROID_USER_HOME="/path/to/user/home/.config/android"`
-                    + `ANDROID_EMULATOR_HOME="[ANDROID_USER_HOME]/emulator"`
-                    + `ANDROID_AVD_HOME="[ANDROID_USER_HOME]/avd"`
-                    + `PATH+="[ANDROID_EMULATOR_HOME]:[ANDROID_HOME]/tools:[ANDROID_HOME]/platform-tools:[ANDROID_HOME]/cmdline-tools/latest/bin:"`
-                - Windows
-                    + `SET ANDROID_HOME="\path\to\android\sdk\root"`
-                    + `SET ANDROID_USER_HOME="\path\to\user\home\.config\android"`
-                    + `SET ANDROID_EMULATOR_HOME="[ANDROID_USER_HOME]\emulator"`
-                    + `SET ANDROID_AVD_HOME="[ANDROID_USER_HOME]\avd"`
-                    + `SET PATH="%PATH%;[ANDROID_EMULATOR_HOME];[ANDROID_HOME]\tools;[ANDROID_HOME]\platform-tools;[ANDROID_HOME]\cmdline-tools\latest\bin;"`
-    - Synopsis/Syntax
+> de-duplicator
+
+- Setup
+    - Dependencies
+    - Pre-Requisites
+- Synopsis/Syntax
+    ```console
+    python -m pyutils.scripts.de-duplicator {options} <arguments>
+    ```
+- Parameters
+    - Positionals
+        1. Source filename
+        2. dataset source : Specify this to indicate the URL's domain source; This is used to split and remove unnessary queries from links
+            - yt | youtube : For URLs that uses youtube's domain (i.e. youtube.com/...?=search-queries)
+            - none : Ignore; just remove duplicates and dont truncate/split
+    - Optionals
+
+> apg-generate
+
+- Information
+    - Notes
+        - Please refer to the main repository that holds this script [Thanatisia/android-project-generator python](https://github.com/Thanatisia/android-project-generator/tree/main/app/languages/python) for the latest updates
+- Setup
+    - Dependencies
+        - android-sdk
+            + cmdline-tools
+        + gradle
+    - Pre-Requisites
+        - Set environment variables in your shell
+            - Linux
+                + `ANDROID_HOME="/path/to/android-sdk"`
+                + `ANDROID_USER_HOME="/path/to/user/home/.config/android"`
+                + `ANDROID_EMULATOR_HOME="[ANDROID_USER_HOME]/emulator"`
+                + `ANDROID_AVD_HOME="[ANDROID_USER_HOME]/avd"`
+                + `PATH+="[ANDROID_EMULATOR_HOME]:[ANDROID_HOME]/tools:[ANDROID_HOME]/platform-tools:[ANDROID_HOME]/cmdline-tools/latest/bin:"`
+            - Windows
+                + `SET ANDROID_HOME="\path\to\android\sdk\root"`
+                + `SET ANDROID_USER_HOME="\path\to\user\home\.config\android"`
+                + `SET ANDROID_EMULATOR_HOME="[ANDROID_USER_HOME]\emulator"`
+                + `SET ANDROID_AVD_HOME="[ANDROID_USER_HOME]\avd"`
+                + `SET PATH="%PATH%;[ANDROID_EMULATOR_HOME];[ANDROID_HOME]\tools;[ANDROID_HOME]\platform-tools;[ANDROID_HOME]\cmdline-tools\latest\bin;"`
+- Synopsis/Syntax
+    ```console
+    apg-generate {options} <arguments>
+    ```
+- Parameters
+    - Positionals
+    - Optionals
+- Usage
+    - Display help
         ```console
-        python -m pypkgs.scripts.apg-generate {options} <arguments>
+        apg-generate --help
         ```
-    - Parameters
-        - Positionals
-        - Optionals
-    - Usage
-        - Display help
-            ```console
-            python -m pypkgs.scripts.apg-generate --help
+
+> asciinema-util
+
+- Information
+    + Description: Terminal recorder using asciinema and convert to gif using asciinema-agg
+
+- Setup
+    - Dependencies
+        - asciinema : In python
+        - asciinema-agg : In cargo
+
+    - Pre-Requisites
+
+- Synopsis/Syntax
+    ```console
+    asciinema-util {options} <arguments> [actions (record|convert)]
+    ```
+
+- Parameters
+    - Positionals
+        + record  : Begin recording the screen terminal using asciinema
+        + convert : Convert the terminal screen recording into an animation gif using asciinema-agg
+    - Optionals
+        - With Arguments
+            + `-c | --command [command-to-execute]`       : Specify a command to execute in asciinema to record
+            + `-t | --theme [theme-name]`                 : Specify the theme to apply to the terminal background in the recording
+            + `--output-terminal-rec-filename [filename]` : Specify the file name of the terminal recording output file
+            + `--output-animation-filename    [filename]` : Specify the file name of the output converted animation GIF 
+            + `--input-terminal-rec-filename  [filename]` : Specify the target file name of the terminal recording file you want to convert via asciinema-agg
+            + `--asciinema-opts [other opts ...]`         : Specify all options you want to pass into asciinema
+            + `--asciinema-agg-opts [other opts ...]`     : Specify all options you want to pass into asciinema-agg
+        - Flags
+            + --debug : Set program to 'debug mode'; All commands will be printed out instead
+            + -h | --help : Display help message
+            + -v | --version : Display system version
+            + --print-opts-all : Print all optionals (with arguments and flags)
+            + --print-opts-with-arguments : Print all optionals with arguments
+            + --print-opts-flags : Print all flags (optionals without arguments)
+
+- Usage
+    - Record terminal screen using asciinema
+        ```bash 
+        asciinema-util record -c 'make' --output-terminal-rec-filename output.cast
+        ```
+    - Convert the terminal recording into animation gif using asciinema (with gifski)
+        ```bash
+        asciinema-util convert --theme solarized-light --input-terminal-rec-filename output.cast --output-animation-filename output.gif
+        ```
+    - Record terminal screen using asciinema and convert recording to gif using asciinema-agg
+        ```bash 
+        asciinema-util \
+            record -c make --output-terminal-rec-filename output.cast \
+            convert --theme solarized-light --input-terminal-rec-filename output.cast --output-animation-filename output.gif
+        ```
+    - Set mode to debug and print out the commands instead of executing directly
+        ```bash
+        asciinema-util --debug
+        ```
+    - Passthrough CLI arguments 
+        - into asciinema directly
+            ```bash
+            asciinema-util --asciinema-opts "options here ..."
+            ````
+        - into asciinema-agg directly
+            ```bash
+            asciinema-util --asciinema-agg-opts "options here ..."
             ```
-
+    - All-in-One record and convert 
+        ```bash
+        asciinema-util \
+            --debug \
+            record --output-terminal-rec-filename output.cast --asciinema-opts '--overwrite' -c "commands arguments values" \
+            convert --theme solarized-light --input-terminal-rec-filename output.cast --output-animation-filename output.gif  --asciinema-agg-opts '--cols 71 --rows 13 --font-size 16' \
+        ```
 
