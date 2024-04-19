@@ -9,7 +9,7 @@ Terminal recorder using asciinema and convert to gif using asciinema-agg
 # Import/Source libraries
 import os
 import sys
-from subprocess import PIPE, Popen
+from subprocess import PIPE, Popen, DEVNULL, STDOUT
 from pyutils.libraries.utils import pprint_error, pprint_info, pprint_warning
 
 """
@@ -29,14 +29,19 @@ def check_software_exists(software_name):
     """
     # Initialize Variables
     exists = False
+    retcode = -1 # Return Code
 
     # Open process pipe and check for output
-    with Popen(["which", software_name], stdout=PIPE) as proc:
-        # Get result
-        stdout = proc.communicate()[0].decode("utf-8")
+    proc = Popen(["which", software_name], stdin=PIPE, stdout=DEVNULL, stderr=STDOUT)
+
+    # Start executing command and wait for the command to complete via .communicate()
+    stdout, stderr = proc.communicate()
+
+    # Get Return Code
+    retcode = proc.returncode
 
     # Check/Process through standard output
-    if stdout != "":
+    if retcode == 0:
         exists = True
 
     return exists

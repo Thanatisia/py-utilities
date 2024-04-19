@@ -289,3 +289,8 @@
     - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
         + Removed 'subprocess.' from 'subprocess.Popen' in function 'check_software_exists()'
 
+#### 1541H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Fixed bug with 'check_software_exists()' where process pipe will print result to standard output
+
