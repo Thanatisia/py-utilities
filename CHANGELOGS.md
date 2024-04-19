@@ -284,3 +284,8 @@
         + Added new function 'validate_dependencies()' to execute during the pre-initialization setup checking if the dependencies executables exists.
         + Integrated 'validate_dependencies()' into main()
 
+#### 1518H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Removed 'subprocess.' from 'subprocess.Popen' in function 'check_software_exists()'
+

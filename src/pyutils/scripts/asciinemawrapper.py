@@ -31,7 +31,7 @@ def check_software_exists(software_name):
     exists = False
 
     # Open process pipe and check for output
-    with subprocess.Popen(["which", software_name], stdout=PIPE) as proc:
+    with Popen(["which", software_name], stdout=PIPE) as proc:
         # Get result
         stdout = proc.communicate()[0].decode("utf-8")
 
