@@ -277,3 +277,10 @@
             - Error/crashes when '--asciinema-opts' is not provided but '--asciinema-agg-opts' is provided
                 + Added key-value guards to check if it exists in the option dictionaries
 
+#### 1512H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Added new function 'check_software_exists(software_name)' for checking if a software exists
+        + Added new function 'validate_dependencies()' to execute during the pre-initialization setup checking if the dependencies executables exists.
+        + Integrated 'validate_dependencies()' into main()
+

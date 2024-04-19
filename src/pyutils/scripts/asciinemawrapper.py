@@ -13,6 +13,35 @@ from subprocess import PIPE, Popen
 from pyutils.libraries.utils import pprint_error, pprint_info, pprint_warning
 
 """
+Utilities Function
+"""
+def check_software_exists(software_name):
+    """
+    Check if the command exists and return status
+
+    :: Params
+    - software_name : Specify name of software binary/executable
+        + Type: String
+
+    :: Return
+    - exists : Flag specifying if the application exists or not
+        + Type: Boolean
+    """
+    # Initialize Variables
+    exists = False
+
+    # Open process pipe and check for output
+    with subprocess.Popen(["which", software_name], stdout=PIPE) as proc:
+        # Get result
+        stdout = proc.communicate()[0].decode("utf-8")
+
+    # Check/Process through standard output
+    if stdout != "":
+        exists = True
+
+    return exists
+
+"""
 Application Function
 """
 def display_help():
@@ -85,6 +114,26 @@ def init():
     exec_name = os.path.split(exec)[1]
     argv = sys.argv[1:]
     argc = len(argv)
+
+def validate_dependencies():
+    """
+    Check if the packages/dependencies are found
+    """
+    # Initialize Variables
+    exec_dependencies = {"pip" : ["asciinema"], "cargo" : ["agg"]}
+
+    # Iterate through dependencies
+    for pkg_mgr, dependency_list in exec_dependencies.items():
+        # Iterate through dependency lists
+        for curr_exec in dependency_list:
+            # Check if software exists
+            exec_exists = check_software_exists(curr_exec)
+
+            # If software does not exists
+            if exec_exists == False:
+                # Exit
+                print("Executable [{}] is not installed/can not be found, please install it using {}".format(curr_exec, pkg_mgr))
+                exit(1)
 
 def get_cli_arguments():
     """
@@ -360,6 +409,7 @@ def merge_dictionary(dict_1, dict_2):
 
 def main():
     init()
+    validate_dependencies()
 
     # Get CLI arguments
     opts = get_cli_arguments()
