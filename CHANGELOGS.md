@@ -301,3 +301,40 @@
     - Updated document 'scripts.md' in 'docs/'
         + Added information and documentation for script 'asciinema-util'
 
+#### 1613H
++ Version: v0.2.5
+
+- Version Changes
+    - Scripts
+        - 'src/pyutils/scripts/asciinemawrapper.py'
+            + Updated version to v0.1.3
+            + Added new function 'check_software_exists(software_name)' for checking if a software exists
+            + Added new function 'validate_dependencies()' to execute during the pre-initialization setup checking if the dependencies executables exists.
+            + Integrated 'validate_dependencies()' into main()
+    - Bug Fixes
+        - Fixed bug issue where application crashes if the dependency application/executable isnt found
+            + Added a dependency checker
+    - Documentations
+        - 'USAGE.md'
+            + Added pre-requisites and setup
+        - 'docs/scripts.md'
+            + Added information and documentation for script 'asciinema-util'
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.5
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated to version v0.2.5
+    - Updated document 'USAGE.md'
+        + Added pre-requisites and setup
+    - Updated document 'scripts.md' in 'docs/'
+        + Added information and documentation for script 'asciinema-util'
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.3
+        - Bug Fixes
+            - Fixed bug issue where application crashes if the dependency application/executable isnt found
+                + Added a dependency checker
+        + Added new function 'check_software_exists(software_name)' for checking if a software exists
+        + Added new function 'validate_dependencies()' to execute during the pre-initialization setup checking if the dependencies executables exists.
+        + Integrated 'validate_dependencies()' into main()
+
