@@ -79,7 +79,7 @@ def init():
     """
     global sys_version, exec, exec_path, exec_name, argv, argc
 
-    sys_version = "v0.1.1"
+    sys_version = "v0.1.2"
     exec = sys.argv[0]
     exec_path = os.path.split(exec)[0]
     exec_name = os.path.split(exec)[1]
@@ -417,11 +417,17 @@ def main():
                 cmd = "asciinema rec"
                 cmd_flags = ""
                 cmd_list = ["asciinema", "rec"]
+                cmd_to_exec = ""
+                asciinema_opts = ""
+                output_terminal_recording_filename = ""
 
                 # Locally store CLI argument values
-                cmd_to_exec = opt_with_arguments["command-to-execute"]
-                asciinema_opts = opt_with_arguments["asciinema-opts"]
-                output_terminal_recording_filename = opt_with_arguments["output-terminal-recording-filename"]
+                if "command-to-execute" in opt_with_arguments:
+                    cmd_to_exec = opt_with_arguments["command-to-execute"]
+                if "asciinema-opts" in opt_with_arguments:
+                    asciinema_opts = opt_with_arguments["asciinema-opts"]
+                if "output-terminal-recording-filename" in opt_with_arguments:
+                    output_terminal_recording_filename = opt_with_arguments["output-terminal-recording-filename"]
 
                 if "debug" in opt_Flags:
                     debug_mode = opt_Flags["debug"]
@@ -466,12 +472,20 @@ def main():
                 cmd="agg"
                 cmd_flags=""
                 cmd_list = ["agg"]
+                theme = ""
+                asciinema_agg_opts = ""
+                input_terminal_recording_filename = ""
+                output_animation_filename = ""
 
                 # Locally store CLI argument values
-                theme = opt_with_arguments["theme"]
-                asciinema_agg_opts = opt_with_arguments["asciinema-agg-opts"]
-                input_terminal_recording_filename = opt_with_arguments["input-terminal-recording-filename"]
-                output_animation_filename = opt_with_arguments["output-animation-filename"]
+                if "theme" in opt_with_arguments:
+                    theme = opt_with_arguments["theme"]
+                if "asciinema-agg-opts" in opt_with_arguments:
+                    asciinema_agg_opts = opt_with_arguments["asciinema-agg-opts"]
+                if "input-terminal-recording-filename" in opt_with_arguments:
+                    input_terminal_recording_filename = opt_with_arguments["input-terminal-recording-filename"]
+                if "output-animation-filename" in opt_with_arguments:
+                    output_animation_filename = opt_with_arguments["output-animation-filename"]
 
                 if "debug" in opt_Flags:
                     debug_mode = opt_Flags["debug"]

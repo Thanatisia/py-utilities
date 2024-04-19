@@ -7,6 +7,7 @@
 + [2024-01-31](#2024-01-31)
 + [2024-03-25](#2024-03-25)
 + [2024-04-18](#2024-04-18)
++ [2024-04-19](#2024-04-19)
 
 ## Logs
 ### 2023-12-21
@@ -254,4 +255,25 @@
         + Merged variables 'opt_with_arguments' and 'opt_Flags' together 
         + Replaced 'opt_with_Flags' with 'merged_dictionary' so that the iterator is going through every single optional arguments, not just flags
         + Cleaned up and removed debug prints
+
+### 2024-04-19
+#### 1430H
++ Version: v0.2.4
+
+- Version Changes
+    - Scripts
+        - 'src/pyutils/scripts/asciinemawrapper.py'
+            + Updated version to v0.1.2
+    - Bug Fixes
+        - Error/crashes when '--asciinema-opts' is not provided but '--asciinema-agg-opts' is provided
+            + Added key-value guards to check if it exists in the option dictionaries
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.4
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.2
+        - Bug Fixes
+            - Error/crashes when '--asciinema-opts' is not provided but '--asciinema-agg-opts' is provided
+                + Added key-value guards to check if it exists in the option dictionaries
 
