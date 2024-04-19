@@ -8,6 +8,7 @@
 + [2024-03-25](#2024-03-25)
 + [2024-04-18](#2024-04-18)
 + [2024-04-19](#2024-04-19)
++ [2024-04-20](#2024-04-20)
 
 ## Logs
 ### 2023-12-21
@@ -337,4 +338,33 @@
         + Added new function 'check_software_exists(software_name)' for checking if a software exists
         + Added new function 'validate_dependencies()' to execute during the pre-initialization setup checking if the dependencies executables exists.
         + Integrated 'validate_dependencies()' into main()
+
+#### 0006H
++ Version: v0.2.6
+
+- Version Changes
+    - New Files
+        + Added new python packages and depedencies file 'requirements.txt'
+    - Bug Fixes
+        - 'src/pyutils/scripts/asciinemwrapper.py'
+            + Fixed bug where parsing '--asciinema-agg-opts' will result in an error due to command line parsing issue
+    - Feature Changes
+        - 'src/pyutils/scripts/asciinemwrapper.py'
+            + Replaced debug print from string to list for improved clarity
+
+- New
+    + Added new python packages and depedencies file 'requirements.txt'
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.6
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated to version v0.2.6
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version for 'asciinema-util' to v0.1.4
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.4
+        + Replaced debug print from string to list for improved clarity
+        - Bug Fixes
+            + Fixed bug where parsing '--asciinema-agg-opts' will result in an error due to command line parsing issue
 

@@ -113,7 +113,7 @@ def init():
     """
     global sys_version, exec, exec_path, exec_name, argv, argc
 
-    sys_version = "v0.1.3"
+    sys_version = "v0.1.4"
     exec = sys.argv[0]
     exec_path = os.path.split(exec)[0]
     exec_name = os.path.split(exec)[1]
@@ -513,7 +513,8 @@ def main():
                 if debug_mode == 1:
                     ## Record terminal using asciinema
                     # print(cmd_str)
-                    print(" ".join(cmd_list))
+                    # print(" ".join(cmd_list))
+                    print(cmd_list)
                 else:
                     # Open a subprocess pipe to execute system command for executing asciinema
                     with Popen(cmd_list, stdout=PIPE) as proc:
@@ -555,9 +556,54 @@ def main():
 
                 if asciinema_agg_opts != "":
                     # cmd_flags+=" {} ".format(asciinema_agg_opts)
-                    # Get options
+                    # Initialize Variables
+                    curr_arg_list = []
+                    curr_flag = ""
+                    prev_flag = ""
+
+                    # Get all options separated
                     asciinema_agg_opts_spl = asciinema_agg_opts.split()
-                    cmd_list.extend(asciinema_agg_opts_spl)
+
+                    # Iterate through all optionals, starting with the key and find all the values to be mapped to the key
+                    for i in range(len(asciinema_agg_opts_spl)):
+                        # Get current option
+                        curr_opt = asciinema_agg_opts_spl[i]
+
+                        # Check if current element contains '-' and '--'
+                        if (curr_opt.startswith('-')) or (curr_opt.startswith("--")):
+                            # Flags/Optionals
+
+                            # Check if list is empty AND flag has moved to the next flag
+                            if ((len(curr_arg_list) != 0) and (prev_flag != curr_flag)):
+                                ## Append into command list
+                                cmd_list.append(' '.join(curr_arg_list))
+
+                                ## Set previous flag
+                                prev_flag = curr_flag
+
+                            ## Append into command list
+                            cmd_list.append(curr_opt)
+
+                            ## Set current optional flag
+                            curr_flag = curr_opt
+
+                            # Initialize/Reset arguments list
+                            curr_arg_list = []
+                        else:
+                            # Arguments to the flag
+                            ## Join the current option into a complete string
+                            curr_opt_joined = "".join(curr_opt)
+
+                            ## Append into arguments list
+                            curr_arg_list.append(curr_opt_joined)
+
+                        ## Check if last element
+                        if i == len(asciinema_agg_opts_spl)-1:
+                            ## Is last elemnt
+                            ## Check if list is empty AND previous flag is not current element
+                            if (len(curr_arg_list) != 0) and (prev_flag != curr_flag):
+                                ## Append final list into command list
+                                cmd_list.append(' '.join(curr_arg_list))
 
                 if input_terminal_recording_filename != "":
                     # cmd_flags+=" {} ".format(input_terminal_recording_filename)
@@ -574,7 +620,8 @@ def main():
 
                 if debug_mode == 1:
                     ## Convert terminal recording by asciinema into gif using asciinema-agg
-                    print(" ".join(cmd_list))
+                    # print(" ".join(cmd_list))
+                    print(cmd_list)
                 else:
                     # Open a subprocess pipe to execute system command for executing asciinema
                     with Popen(cmd_list, stdout=PIPE) as proc:
