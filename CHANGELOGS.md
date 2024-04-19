@@ -294,3 +294,10 @@
     - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
         + Fixed bug with 'check_software_exists()' where process pipe will print result to standard output
 
+#### 1605H
+- Updates
+    - Updated document 'USAGE.md'
+        + Added pre-requisites and setup
+    - Updated document 'scripts.md' in 'docs/'
+        + Added information and documentation for script 'asciinema-util'
+

@@ -250,8 +250,24 @@
 
 - Setup
     - Dependencies
+        + python
+        + python-pip
+        + rust
+        + cargo
         - asciinema : In python
+            - Install using python-pip
+                ```bash
+                python3 -m pip install asciinema
+                ```
         - asciinema-agg : In cargo
+            - Update rust (and cargo) using rustup
+                ```bash
+                rustup
+                ```
+            - Install using cargo
+                ```bash
+                cargo install --git https://github.com/asciinema/agg
+                ```
 
     - Pre-Requisites
 
