@@ -1,0 +1,10 @@
+# Python packages and  dependencies here
+
+## Pip Packages
+pyright
+asciinema
+
+## Git Packages
+android-project-generator @ git+https://github.com/Thanatisia/android-project-generator#subdirectory=app/languages/python&branch=main",
+mkparse @ git+https://github.com/Thanatisia/makefile-parser-python
+

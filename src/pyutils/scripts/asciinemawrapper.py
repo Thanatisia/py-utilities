@@ -9,12 +9,113 @@ Terminal recorder using asciinema and convert to gif using asciinema-agg
 # Import/Source libraries
 import os
 import sys
-from subprocess import PIPE, Popen
+from subprocess import PIPE, Popen, DEVNULL, STDOUT
 from pyutils.libraries.utils import pprint_error, pprint_info, pprint_warning
+
+"""
+Utilities Function
+"""
+def check_software_exists(software_name):
+    """
+    Check if the command exists and return status
+
+    :: Params
+    - software_name : Specify name of software binary/executable
+        + Type: String
+
+    :: Return
+    - exists : Flag specifying if the application exists or not
+        + Type: Boolean
+    """
+    # Initialize Variables
+    exists = False
+    retcode = -1 # Return Code
+
+    # Open process pipe and check for output
+    proc = Popen(["which", software_name], stdin=PIPE, stdout=DEVNULL, stderr=STDOUT)
+
+    # Start executing command and wait for the command to complete via .communicate()
+    stdout, stderr = proc.communicate()
+
+    # Get Return Code
+    retcode = proc.returncode
+
+    # Check/Process through standard output
+    if retcode == 0:
+        exists = True
+
+    return exists
 
 """
 Application Function
 """
+def format_argument_key_values(cmd_list, opts) -> None:
+    """
+    Split the optional arguments string (i.e. --key "argument-1" "argument-2" ...) and split it into a list
+    to find all arguments and its associated values
+        + Keys are identified by the '-' and '--' delimiters
+        - The values are all non-key arguments until the next key is found
+            + Every value will be grouped in a single list entry
+
+    :: Params
+    - cmd_list : Specify the command list to place the command line argument key and its corresponding values into
+        + Type: List
+    - opts : Specify the optional argument string specified by the user
+        + Type: String
+        - Notes
+            + The identifier for CLI argument option keys (aka names) is the '-'/'--' delimiter/separator
+        - Examples
+            + --key "argument-1" "argument-2" == ["--key", "argument-1", "argument-2"]
+    """
+    # Initialize Variables
+    curr_arg_list = []
+    curr_flag = ""
+    prev_flag = ""
+
+    # Get all options separated
+    opts_spl = opts.split()
+
+    # Iterate through all optionals, starting with the key and find all the values to be mapped to the key
+    for i in range(len(opts_spl)):
+        # Get current option
+        curr_opt = opts_spl[i]
+
+        # Check if current element contains '-' and '--'
+        if (curr_opt.startswith('-')) or (curr_opt.startswith("--")):
+            # Flags/Optionals
+
+            # Check if list is empty AND flag has moved to the next flag
+            if ((len(curr_arg_list) != 0) and (prev_flag != curr_flag)):
+                ## Append into command list
+                cmd_list.append(' '.join(curr_arg_list))
+
+                ## Set previous flag
+                prev_flag = curr_flag
+
+            ## Append into command list
+            cmd_list.append(curr_opt)
+
+            ## Set current optional flag
+            curr_flag = curr_opt
+
+            # Initialize/Reset arguments list
+            curr_arg_list = []
+        else:
+            # Arguments to the flag
+            ## Join the current option into a complete string
+            curr_opt_joined = "".join(curr_opt)
+
+            ## Append into arguments list
+            curr_arg_list.append(curr_opt_joined)
+
+        ## Check if last element
+        if i == len(opts_spl)-1:
+            ## Is last elemnt
+            ## Check if list is empty AND previous flag is not current element
+            if (len(curr_arg_list) != 0) and (prev_flag != curr_flag):
+                ## Append final list into command list
+                cmd_list.append(' '.join(curr_arg_list))
+
 def display_help():
     """
     Display help message
@@ -79,12 +180,32 @@ def init():
     """
     global sys_version, exec, exec_path, exec_name, argv, argc
 
-    sys_version = "v0.1.1"
+    sys_version = "v0.1.4"
     exec = sys.argv[0]
     exec_path = os.path.split(exec)[0]
     exec_name = os.path.split(exec)[1]
     argv = sys.argv[1:]
     argc = len(argv)
+
+def validate_dependencies():
+    """
+    Check if the packages/dependencies are found
+    """
+    # Initialize Variables
+    exec_dependencies = {"pip" : ["asciinema"], "cargo" : ["agg"]}
+
+    # Iterate through dependencies
+    for pkg_mgr, dependency_list in exec_dependencies.items():
+        # Iterate through dependency lists
+        for curr_exec in dependency_list:
+            # Check if software exists
+            exec_exists = check_software_exists(curr_exec)
+
+            # If software does not exists
+            if exec_exists == False:
+                # Exit
+                print("Executable [{}] is not installed/can not be found, please install it using {}".format(curr_exec, pkg_mgr))
+                exit(1)
 
 def get_cli_arguments():
     """
@@ -360,6 +481,7 @@ def merge_dictionary(dict_1, dict_2):
 
 def main():
     init()
+    validate_dependencies()
 
     # Get CLI arguments
     opts = get_cli_arguments()
@@ -417,11 +539,17 @@ def main():
                 cmd = "asciinema rec"
                 cmd_flags = ""
                 cmd_list = ["asciinema", "rec"]
+                cmd_to_exec = ""
+                asciinema_opts = ""
+                output_terminal_recording_filename = ""
 
                 # Locally store CLI argument values
-                cmd_to_exec = opt_with_arguments["command-to-execute"]
-                asciinema_opts = opt_with_arguments["asciinema-opts"]
-                output_terminal_recording_filename = opt_with_arguments["output-terminal-recording-filename"]
+                if "command-to-execute" in opt_with_arguments:
+                    cmd_to_exec = opt_with_arguments["command-to-execute"]
+                if "asciinema-opts" in opt_with_arguments:
+                    asciinema_opts = opt_with_arguments["asciinema-opts"]
+                if "output-terminal-recording-filename" in opt_with_arguments:
+                    output_terminal_recording_filename = opt_with_arguments["output-terminal-recording-filename"]
 
                 if "debug" in opt_Flags:
                     debug_mode = opt_Flags["debug"]
@@ -436,7 +564,7 @@ def main():
 
                 if asciinema_opts != "":
                     # cmd_flags+=" {} ".format(asciinema_opts)
-                    cmd_list.append(asciinema_opts)
+                    format_argument_key_values(cmd_list, asciinema_opts)
 
                 if output_terminal_recording_filename != "":
                     # cmd_flags+=" {} ".format(output_terminal_recording_filename)
@@ -452,8 +580,11 @@ def main():
                 if debug_mode == 1:
                     ## Record terminal using asciinema
                     # print(cmd_str)
-                    print(" ".join(cmd_list))
+                    # print(" ".join(cmd_list))
+                    print(cmd_list)
                 else:
+                    pprint_info("Recording terminal...")
+
                     # Open a subprocess pipe to execute system command for executing asciinema
                     with Popen(cmd_list, stdout=PIPE) as proc:
                         # Execute process
@@ -466,12 +597,20 @@ def main():
                 cmd="agg"
                 cmd_flags=""
                 cmd_list = ["agg"]
+                theme = ""
+                asciinema_agg_opts = ""
+                input_terminal_recording_filename = ""
+                output_animation_filename = ""
 
                 # Locally store CLI argument values
-                theme = opt_with_arguments["theme"]
-                asciinema_agg_opts = opt_with_arguments["asciinema-agg-opts"]
-                input_terminal_recording_filename = opt_with_arguments["input-terminal-recording-filename"]
-                output_animation_filename = opt_with_arguments["output-animation-filename"]
+                if "theme" in opt_with_arguments:
+                    theme = opt_with_arguments["theme"]
+                if "asciinema-agg-opts" in opt_with_arguments:
+                    asciinema_agg_opts = opt_with_arguments["asciinema-agg-opts"]
+                if "input-terminal-recording-filename" in opt_with_arguments:
+                    input_terminal_recording_filename = opt_with_arguments["input-terminal-recording-filename"]
+                if "output-animation-filename" in opt_with_arguments:
+                    output_animation_filename = opt_with_arguments["output-animation-filename"]
 
                 if "debug" in opt_Flags:
                     debug_mode = opt_Flags["debug"]
@@ -486,9 +625,7 @@ def main():
 
                 if asciinema_agg_opts != "":
                     # cmd_flags+=" {} ".format(asciinema_agg_opts)
-                    # Get options
-                    asciinema_agg_opts_spl = asciinema_agg_opts.split()
-                    cmd_list.extend(asciinema_agg_opts_spl)
+                    format_argument_key_values(cmd_list, asciinema_agg_opts)
 
                 if input_terminal_recording_filename != "":
                     # cmd_flags+=" {} ".format(input_terminal_recording_filename)
@@ -505,8 +642,11 @@ def main():
 
                 if debug_mode == 1:
                     ## Convert terminal recording by asciinema into gif using asciinema-agg
-                    print(" ".join(cmd_list))
+                    # print(" ".join(cmd_list))
+                    print(cmd_list)
                 else:
+                    pprint_info("Converting terminal recording to GIF...")
+
                     # Open a subprocess pipe to execute system command for executing asciinema
                     with Popen(cmd_list, stdout=PIPE) as proc:
                         # Execute process

@@ -7,6 +7,8 @@
 + [2024-01-31](#2024-01-31)
 + [2024-03-25](#2024-03-25)
 + [2024-04-18](#2024-04-18)
++ [2024-04-19](#2024-04-19)
++ [2024-04-20](#2024-04-20)
 
 ## Logs
 ### 2023-12-21
@@ -254,4 +256,156 @@
         + Merged variables 'opt_with_arguments' and 'opt_Flags' together 
         + Replaced 'opt_with_Flags' with 'merged_dictionary' so that the iterator is going through every single optional arguments, not just flags
         + Cleaned up and removed debug prints
+
+### 2024-04-19
+#### 1430H
++ Version: v0.2.4
+
+- Version Changes
+    - Scripts
+        - 'src/pyutils/scripts/asciinemawrapper.py'
+            + Updated version to v0.1.2
+    - Bug Fixes
+        - Error/crashes when '--asciinema-opts' is not provided but '--asciinema-agg-opts' is provided
+            + Added key-value guards to check if it exists in the option dictionaries
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.4
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.2
+        - Bug Fixes
+            - Error/crashes when '--asciinema-opts' is not provided but '--asciinema-agg-opts' is provided
+                + Added key-value guards to check if it exists in the option dictionaries
+
+#### 1512H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Added new function 'check_software_exists(software_name)' for checking if a software exists
+        + Added new function 'validate_dependencies()' to execute during the pre-initialization setup checking if the dependencies executables exists.
+        + Integrated 'validate_dependencies()' into main()
+
+#### 1518H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Removed 'subprocess.' from 'subprocess.Popen' in function 'check_software_exists()'
+
+#### 1541H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Fixed bug with 'check_software_exists()' where process pipe will print result to standard output
+
+#### 1605H
+- Updates
+    - Updated document 'USAGE.md'
+        + Added pre-requisites and setup
+    - Updated document 'scripts.md' in 'docs/'
+        + Added information and documentation for script 'asciinema-util'
+
+#### 1613H
++ Version: v0.2.5
+
+- Version Changes
+    - Scripts
+        - 'src/pyutils/scripts/asciinemawrapper.py'
+            + Updated version to v0.1.3
+            + Added new function 'check_software_exists(software_name)' for checking if a software exists
+            + Added new function 'validate_dependencies()' to execute during the pre-initialization setup checking if the dependencies executables exists.
+            + Integrated 'validate_dependencies()' into main()
+    - Bug Fixes
+        - Fixed bug issue where application crashes if the dependency application/executable isnt found
+            + Added a dependency checker
+    - Documentations
+        - 'USAGE.md'
+            + Added pre-requisites and setup
+        - 'docs/scripts.md'
+            + Added information and documentation for script 'asciinema-util'
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.5
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated to version v0.2.5
+    - Updated document 'USAGE.md'
+        + Added pre-requisites and setup
+    - Updated document 'scripts.md' in 'docs/'
+        + Added information and documentation for script 'asciinema-util'
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.3
+        - Bug Fixes
+            - Fixed bug issue where application crashes if the dependency application/executable isnt found
+                + Added a dependency checker
+        + Added new function 'check_software_exists(software_name)' for checking if a software exists
+        + Added new function 'validate_dependencies()' to execute during the pre-initialization setup checking if the dependencies executables exists.
+        + Integrated 'validate_dependencies()' into main()
+
+#### 0006H
++ Version: v0.2.6
+
+- Version Changes
+    - New Files
+        + Added new python packages and depedencies file 'requirements.txt'
+    - Bug Fixes
+        - 'src/pyutils/scripts/asciinemwrapper.py'
+            + Fixed bug where parsing '--asciinema-agg-opts' will result in an error due to command line parsing issue
+    - Feature Changes
+        - 'src/pyutils/scripts/asciinemwrapper.py'
+            + Replaced debug print from string to list for improved clarity
+
+- New
+    + Added new python packages and depedencies file 'requirements.txt'
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.6
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated to version v0.2.6
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version for 'asciinema-util' to v0.1.4
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.4
+        + Replaced debug print from string to list for improved clarity
+        - Bug Fixes
+            + Fixed bug where parsing '--asciinema-agg-opts' will result in an error due to command line parsing issue
+
+#### 1012H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Added new function 'format_argument_key_values(cmd_list, opts)' for searcing for all CLI argument key-values and storing them into a list properly
+        - Bug Fixes
+            + Moved the statements used to fix the '--asciinema-agg-opts' argument parser into a dedicated function 'format_argument_key_values(cmd_list, opts)'
+            + Fixed bug where parsing '--asciinema-opts' will result in an error due to command line parsing issue
+
+#### 1653H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Added information printing to before recording and converting
+
+#### 2131H
++ Version: v0.2.7
+
+- Version Changes
+    - Bug Fixes
+        - 'src/pyutils/scripts/asciinemwrapper.py'
+            + Moved the statements used to fix the '--asciinema-agg-opts' argument parser into a dedicated function 'format_argument_key_values(cmd_list, opts)'
+            + Fixed bug where parsing '--asciinema-opts' will result in an error due to command line parsing issue
+    - Feature Changes
+        - 'src/pyutils/scripts/asciinemwrapper.py'
+            + Added new function 'format_argument_key_values(cmd_list, opts)' for searcing for all CLI argument key-values and storing them into a list properly
+            + Added information printing to before recording and converting
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.7
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated to version v0.2.7
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version for 'asciinema-util' to v0.1.5
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.4
+        + Added new function 'format_argument_key_values(cmd_list, opts)' for searcing for all CLI argument key-values and storing them into a list properly
+        + Added information printing to before recording and converting
+        - Bug Fixes
+            + Moved the statements used to fix the '--asciinema-agg-opts' argument parser into a dedicated function 'format_argument_key_values(cmd_list, opts)'
+            + Fixed bug where parsing '--asciinema-opts' will result in an error due to command line parsing issue
 
