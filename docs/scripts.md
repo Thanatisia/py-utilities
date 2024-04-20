@@ -6,7 +6,7 @@ List of standalone applications
 + de-duplicator
 - asciinema-util
     - Information
-        + Version: v0.1.4
+        + Version: v0.1.5
     - Script
         - Dependencies
             + asciinema

@@ -381,3 +381,31 @@
     - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
         + Added information printing to before recording and converting
 
+#### 2131H
++ Version: v0.2.7
+
+- Version Changes
+    - Bug Fixes
+        - 'src/pyutils/scripts/asciinemwrapper.py'
+            + Moved the statements used to fix the '--asciinema-agg-opts' argument parser into a dedicated function 'format_argument_key_values(cmd_list, opts)'
+            + Fixed bug where parsing '--asciinema-opts' will result in an error due to command line parsing issue
+    - Feature Changes
+        - 'src/pyutils/scripts/asciinemwrapper.py'
+            + Added new function 'format_argument_key_values(cmd_list, opts)' for searcing for all CLI argument key-values and storing them into a list properly
+            + Added information printing to before recording and converting
+
+- Updates
+    - Updated document 'README.md'
+        + Updated to version v0.2.7
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated to version v0.2.7
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version for 'asciinema-util' to v0.1.5
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.4
+        + Added new function 'format_argument_key_values(cmd_list, opts)' for searcing for all CLI argument key-values and storing them into a list properly
+        + Added information printing to before recording and converting
+        - Bug Fixes
+            + Moved the statements used to fix the '--asciinema-agg-opts' argument parser into a dedicated function 'format_argument_key_values(cmd_list, opts)'
+            + Fixed bug where parsing '--asciinema-opts' will result in an error due to command line parsing issue
+
