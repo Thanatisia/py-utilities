@@ -49,6 +49,73 @@ def check_software_exists(software_name):
 """
 Application Function
 """
+def format_argument_key_values(cmd_list, opts) -> None:
+    """
+    Split the optional arguments string (i.e. --key "argument-1" "argument-2" ...) and split it into a list
+    to find all arguments and its associated values
+        + Keys are identified by the '-' and '--' delimiters
+        - The values are all non-key arguments until the next key is found
+            + Every value will be grouped in a single list entry
+
+    :: Params
+    - cmd_list : Specify the command list to place the command line argument key and its corresponding values into
+        + Type: List
+    - opts : Specify the optional argument string specified by the user
+        + Type: String
+        - Notes
+            + The identifier for CLI argument option keys (aka names) is the '-'/'--' delimiter/separator
+        - Examples
+            + --key "argument-1" "argument-2" == ["--key", "argument-1", "argument-2"]
+    """
+    # Initialize Variables
+    curr_arg_list = []
+    curr_flag = ""
+    prev_flag = ""
+
+    # Get all options separated
+    opts_spl = opts.split()
+
+    # Iterate through all optionals, starting with the key and find all the values to be mapped to the key
+    for i in range(len(opts_spl)):
+        # Get current option
+        curr_opt = opts_spl[i]
+
+        # Check if current element contains '-' and '--'
+        if (curr_opt.startswith('-')) or (curr_opt.startswith("--")):
+            # Flags/Optionals
+
+            # Check if list is empty AND flag has moved to the next flag
+            if ((len(curr_arg_list) != 0) and (prev_flag != curr_flag)):
+                ## Append into command list
+                cmd_list.append(' '.join(curr_arg_list))
+
+                ## Set previous flag
+                prev_flag = curr_flag
+
+            ## Append into command list
+            cmd_list.append(curr_opt)
+
+            ## Set current optional flag
+            curr_flag = curr_opt
+
+            # Initialize/Reset arguments list
+            curr_arg_list = []
+        else:
+            # Arguments to the flag
+            ## Join the current option into a complete string
+            curr_opt_joined = "".join(curr_opt)
+
+            ## Append into arguments list
+            curr_arg_list.append(curr_opt_joined)
+
+        ## Check if last element
+        if i == len(opts_spl)-1:
+            ## Is last elemnt
+            ## Check if list is empty AND previous flag is not current element
+            if (len(curr_arg_list) != 0) and (prev_flag != curr_flag):
+                ## Append final list into command list
+                cmd_list.append(' '.join(curr_arg_list))
+
 def display_help():
     """
     Display help message
@@ -497,7 +564,7 @@ def main():
 
                 if asciinema_opts != "":
                     # cmd_flags+=" {} ".format(asciinema_opts)
-                    cmd_list.append(asciinema_opts)
+                    format_argument_key_values(cmd_list, asciinema_opts)
 
                 if output_terminal_recording_filename != "":
                     # cmd_flags+=" {} ".format(output_terminal_recording_filename)
@@ -556,54 +623,7 @@ def main():
 
                 if asciinema_agg_opts != "":
                     # cmd_flags+=" {} ".format(asciinema_agg_opts)
-                    # Initialize Variables
-                    curr_arg_list = []
-                    curr_flag = ""
-                    prev_flag = ""
-
-                    # Get all options separated
-                    asciinema_agg_opts_spl = asciinema_agg_opts.split()
-
-                    # Iterate through all optionals, starting with the key and find all the values to be mapped to the key
-                    for i in range(len(asciinema_agg_opts_spl)):
-                        # Get current option
-                        curr_opt = asciinema_agg_opts_spl[i]
-
-                        # Check if current element contains '-' and '--'
-                        if (curr_opt.startswith('-')) or (curr_opt.startswith("--")):
-                            # Flags/Optionals
-
-                            # Check if list is empty AND flag has moved to the next flag
-                            if ((len(curr_arg_list) != 0) and (prev_flag != curr_flag)):
-                                ## Append into command list
-                                cmd_list.append(' '.join(curr_arg_list))
-
-                                ## Set previous flag
-                                prev_flag = curr_flag
-
-                            ## Append into command list
-                            cmd_list.append(curr_opt)
-
-                            ## Set current optional flag
-                            curr_flag = curr_opt
-
-                            # Initialize/Reset arguments list
-                            curr_arg_list = []
-                        else:
-                            # Arguments to the flag
-                            ## Join the current option into a complete string
-                            curr_opt_joined = "".join(curr_opt)
-
-                            ## Append into arguments list
-                            curr_arg_list.append(curr_opt_joined)
-
-                        ## Check if last element
-                        if i == len(asciinema_agg_opts_spl)-1:
-                            ## Is last elemnt
-                            ## Check if list is empty AND previous flag is not current element
-                            if (len(curr_arg_list) != 0) and (prev_flag != curr_flag):
-                                ## Append final list into command list
-                                cmd_list.append(' '.join(curr_arg_list))
+                    format_argument_key_values(cmd_list, asciinema_agg_opts)
 
                 if input_terminal_recording_filename != "":
                     # cmd_flags+=" {} ".format(input_terminal_recording_filename)

@@ -368,3 +368,11 @@
         - Bug Fixes
             + Fixed bug where parsing '--asciinema-agg-opts' will result in an error due to command line parsing issue
 
+#### 1012H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Added new function 'format_argument_key_values(cmd_list, opts)' for searcing for all CLI argument key-values and storing them into a list properly
+        - Bug Fixes
+            + Moved the statements used to fix the '--asciinema-agg-opts' argument parser into a dedicated function 'format_argument_key_values(cmd_list, opts)'
+            + Fixed bug where parsing '--asciinema-opts' will result in an error due to command line parsing issue
+
