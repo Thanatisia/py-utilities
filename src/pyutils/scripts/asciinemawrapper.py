@@ -583,6 +583,8 @@ def main():
                     # print(" ".join(cmd_list))
                     print(cmd_list)
                 else:
+                    pprint_info("Recording terminal...")
+
                     # Open a subprocess pipe to execute system command for executing asciinema
                     with Popen(cmd_list, stdout=PIPE) as proc:
                         # Execute process
@@ -643,6 +645,8 @@ def main():
                     # print(" ".join(cmd_list))
                     print(cmd_list)
                 else:
+                    pprint_info("Converting terminal recording to GIF...")
+
                     # Open a subprocess pipe to execute system command for executing asciinema
                     with Popen(cmd_list, stdout=PIPE) as proc:
                         # Execute process
