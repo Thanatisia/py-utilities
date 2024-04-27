@@ -37,7 +37,7 @@ def benchmark(fn):
     # Return
     return wrapper
 
-def benchmark_custom(verbose=True):
+def benchmark_custom(verbose=True, return_result=False):
     """
     Benchmark a function (with its arguments) and print the start time, end time, and time elapsed, with custom arguments
     """
@@ -70,6 +70,11 @@ def benchmark_custom(verbose=True):
                 print("[i] Starting Time: {}".format(start_timer))
                 print("[i] Ending Time: {}".format(end_timer))
                 print("[i] Time taken: {} ({:0>2}:{:0>2}:{:05.2f})".format(time_elapsed, int(hours), int(minutes), seconds))
+
+            # Check if flag 'return_result' is True
+            if return_result == True:
+                # True: Return the result; If False: return None
+                return result
 
         # Return nested wrapper function
         return wrapper

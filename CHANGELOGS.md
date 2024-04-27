@@ -449,3 +449,23 @@
     - Updated decorator 'benchmarker.py' in 'src/pyutils/decorators/'
         + Replaced description
 
+#### 1535H
++ Version: v0.2.9
+
+- Version Changes
+    - Bug Fixes
+    - Additions
+    - Feature Changes
+        - Updated decorator 'benchmark.py' in 'src/pyutils/decorators'
+            + Added new argument 'return_result=False' to 'benchmark_custom': Enable (set this to true) if your function requires returning of a result
+
+- Updates
+    - Updated document 'README.md'
+        + Updated version to 'v0.2.9'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated version to 'v0.2.9'
+    - Updated document 'USAGE.md'
+        + Added information on the decorator functions
+    - Updated decorator 'benchmark.py' in 'src/pyutils/decorators/'
+        + Implemented new argument key-value to decorator function 'benchmark_custom'
+
