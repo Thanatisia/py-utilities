@@ -9,6 +9,7 @@
 + [2024-04-18](#2024-04-18)
 + [2024-04-19](#2024-04-19)
 + [2024-04-20](#2024-04-20)
++ [2024-04-27](#2024-04-27)
 
 ## Logs
 ### 2023-12-21
@@ -408,4 +409,43 @@
         - Bug Fixes
             + Moved the statements used to fix the '--asciinema-agg-opts' argument parser into a dedicated function 'format_argument_key_values(cmd_list, opts)'
             + Fixed bug where parsing '--asciinema-opts' will result in an error due to command line parsing issue
+
+### 2024-04-27
+#### 1401H
+- New
+    - Added new directory 'decorators' in 'src/pyutils/' to hold all decorators
+        + Added new module 'benchmark.py' containing decorator functions for benchmarking
+
+    + Added new unit test 'test-decorators.py' in 'tests/' containing unit tests for decorators
+
+#### 1403H
++ Version: v0.2.8
+
+- Version Changes
+    - Bug Fixes
+    - Additions
+        - Added new directory 'decorators' in 'src/pyutils/' to hold all decorators
+            + Added new module 'benchmark.py' containing decorator functions for benchmarking
+        + Added new work-in-progress CLI utility 'benchmark.py' in 'src/pyutils/scripts': A Software test benchmarker for python that aims to make python code testing easier on the shell/TTY level
+    - Feature Changes
+
+- New
+    - Added new directory 'decorators' in 'src/pyutils/' to hold all decorators
+        + Added new module 'benchmark.py' containing decorator functions for benchmarking
+    + Added new unit test 'test-decorators.py' in 'tests/' containing unit tests for decorators
+    + Added new work-in-progress CLI utility 'benchmark.py' in 'src/pyutils/scripts': A Software test benchmarker for python that aims to make python code testing easier on the shell/TTY level
+
+- Updates
+    - Updated document 'README.md'
+        + Updated version to 'v0.2.8'
+        + Updated documentations to include more context
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated version to 'v0.2.8'
+        + Added new work-in-progress CLI utility 'benchmarker'
+    - Updated document 'USAGE.md'
+        + Added information on the decorator functions
+    - Updated document 'scripts.md' in 'docs/'
+        + Added Work-in-Progress CLI utility 'benchmarker.py' to the list
+    - Updated decorator 'benchmarker.py' in 'src/pyutils/decorators/'
+        + Replaced description
 
