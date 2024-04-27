@@ -9,6 +9,7 @@
 + [2024-04-18](#2024-04-18)
 + [2024-04-19](#2024-04-19)
 + [2024-04-20](#2024-04-20)
++ [2024-04-27](#2024-04-27)
 
 ## Logs
 ### 2023-12-21
@@ -408,4 +409,12 @@
         - Bug Fixes
             + Moved the statements used to fix the '--asciinema-agg-opts' argument parser into a dedicated function 'format_argument_key_values(cmd_list, opts)'
             + Fixed bug where parsing '--asciinema-opts' will result in an error due to command line parsing issue
+
+### 2024-04-27
+#### 1401H
+- New
+    - Added new directory 'decorators' in 'src/pyutils/' to hold all decorators
+        + Added new module 'benchmark.py' containing decorator functions for benchmarking
+
+    + Added new unit test 'test-decorators.py' in 'tests/' containing unit tests for decorators
 
