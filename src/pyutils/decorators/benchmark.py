@@ -1,5 +1,5 @@
 """
-Software Code Benchmarking CLI utility
+Decorator library containing software code benchmarking functionalities
 """
 import os
 import sys

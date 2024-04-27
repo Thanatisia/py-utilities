@@ -1,6 +1,8 @@
 # USAGE and Recipes
 
 ## Table of Contents
+- [Decorators](#decorators)
+    - [benchmark](#benchmark) : A Software code benchmarker decorator/wrapper to be applied to your function to test its speed
 - [Recipes](#recipes)
     - Packages
         - Libraries
@@ -11,6 +13,31 @@
     + de-duplicator
     + apg-generate
     + asciinema-util
+
+## Decorators
+### benchmark
+#### Functions
+- `benchmark(fn)`: Decorator to apply to a function to benchmark
+    - Usage
+        ```python
+        @benchmark
+        def function():
+            print("Hello World")
+        ```
+- `benchmark_custom(verbose=True)`: Benchmark a function (with its arguments) and print the start time, end time, and time elapsed, with custom arguments
+    - Parameters Signature/Headers
+        - verbose : Enable/Disable verbose message output
+            + Type: Boolean
+            + Default: True
+            - Values
+                + True = Verbose
+                + False = Not Verbose
+    - Usage
+        ```python
+        @benchmark_custom(verbose={True|False})
+        def function():
+            print("Hello World")
+        ```
 
 ## Recipes
 ### Libraries

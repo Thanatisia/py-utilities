@@ -3,6 +3,10 @@ List of standalone applications
 
 ## CLI Applications
 + apg-generate
+- benchmarker
+    - Information
+        + Version: v0.1.0
+        + Status: Work-in-Progress
 + de-duplicator
 - asciinema-util
     - Information

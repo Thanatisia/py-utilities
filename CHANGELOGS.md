@@ -418,3 +418,34 @@
 
     + Added new unit test 'test-decorators.py' in 'tests/' containing unit tests for decorators
 
+#### 1403H
++ Version: v0.2.8
+
+- Version Changes
+    - Bug Fixes
+    - Additions
+        - Added new directory 'decorators' in 'src/pyutils/' to hold all decorators
+            + Added new module 'benchmark.py' containing decorator functions for benchmarking
+        + Added new work-in-progress CLI utility 'benchmark.py' in 'src/pyutils/scripts': A Software test benchmarker for python that aims to make python code testing easier on the shell/TTY level
+    - Feature Changes
+
+- New
+    - Added new directory 'decorators' in 'src/pyutils/' to hold all decorators
+        + Added new module 'benchmark.py' containing decorator functions for benchmarking
+    + Added new unit test 'test-decorators.py' in 'tests/' containing unit tests for decorators
+    + Added new work-in-progress CLI utility 'benchmark.py' in 'src/pyutils/scripts': A Software test benchmarker for python that aims to make python code testing easier on the shell/TTY level
+
+- Updates
+    - Updated document 'README.md'
+        + Updated version to 'v0.2.8'
+        + Updated documentations to include more context
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated version to 'v0.2.8'
+        + Added new work-in-progress CLI utility 'benchmarker'
+    - Updated document 'USAGE.md'
+        + Added information on the decorator functions
+    - Updated document 'scripts.md' in 'docs/'
+        + Added Work-in-Progress CLI utility 'benchmarker.py' to the list
+    - Updated decorator 'benchmarker.py' in 'src/pyutils/decorators/'
+        + Replaced description
+

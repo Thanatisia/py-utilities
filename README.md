@@ -6,7 +6,7 @@
 + A python one-stop-shop mono-repo containing various useful python utilities, packages/frameworks/libraries that you can just install and use
 
 ### Project
-+ Current Version: v0.2.7
++ Current Version: v0.2.8
 
 ## Setup
 ### Dependencies
@@ -35,6 +35,15 @@
         ```bash
         python3 -m pip install git+https://github.com/Thanatisia/py-utilities{@[branch-tag-name]}
         ```
+    - Using requirements.txt
+        - Create 'requirements.txt'
+            ```
+            pyutils @ git+https://github.com/Thanatisia/py-utilities{@[branch-tag-name]}
+            ```
+        - Install pip packages using 'requirements.txt'
+            ```bash
+            python3 -m pip install -Ur requirements.txt
+            ```
 
 - Manually via cloning
     - Clone git repository
@@ -70,9 +79,14 @@
     ```
 
 ### Following usage setup
-- Initialization after cloning project
+- Initialize git submodule databases
     ```console
     git submodule --init
+    ```
+
+- Clone all submodules in the submodule database/list
+    ```console
+    git submodule update --init
     ```
 
 ## Documentations
@@ -82,6 +96,7 @@
 - root/
     - src/
         - pyutils/
+            - decorators/ : Place all decorator wrapper libraries here
             - frameworks/ : Place all frameworks and multi-library files here
             - libraries/  : Place all standalone libraries/modules and classes here
             - scripts/    : Place all scripts/CLI utilities here
