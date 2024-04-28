@@ -5,7 +5,7 @@ List of standalone applications
 + apg-generate
 - benchmarker
     - Information
-        + Version: v0.1.0
+        + Version: v0.2.0
         + Status: Work-in-Progress
 + de-duplicator
 - asciinema-util
