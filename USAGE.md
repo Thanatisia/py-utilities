@@ -10,6 +10,7 @@
             + [mkparser](https://github.com/Thanatisia/makefile-parser-python/blob/main/USAGE.md)
             + [sqlite_lib](#sqlite_lib)
 - [Scripts](#scripts)
+    + benchmarker
     + de-duplicator
     + apg-generate
     + asciinema-util
@@ -385,5 +386,45 @@
             --debug \
             record --output-terminal-rec-filename output.cast --asciinema-opts '--overwrite' -c "commands arguments values" \
             convert --theme solarized-light --input-terminal-rec-filename output.cast --output-animation-filename output.gif  --asciinema-agg-opts '--cols 71 --rows 13 --font-size 16'
+        ```
+
+> benchmarker
+
+- Information
+    - Description: Work-in-Progress Benchmarker CLI utility powered by subprocess,
+        + the in-package module 'pyutils.libraries.subprocess' and
+        + the in-package decorator 'pyutils.decorators.benchmark'
+
+- Setup
+    - Dependencies
+        + python
+        + python-pip
+
+    - Pre-Requisites
+
+- Synopsis/Syntax
+    ```console
+    benchmarker {optionals} <arguments>
+    ```
+
+- Parameters
+    - Positionals
+        + start : Begin executing the command benchmark with the arguments and stdin stream data
+    - Optionals
+        - With Arguments
+            + `--set-command "[command] <arguments>"` : Set the target command that you wish to execute/benchmark here
+            + `--set-stdin-data "stdin data here"` : Set the standard input stream data you wish to pass into the target command here
+        - Flags
+            + -h | --help : Display help message
+            + -v | --version : Display system version
+
+- Usage
+    - Execute a command
+        ```bash
+        benchmarker --set-command "ip a s" start
+        ```
+    - Execute a command with stdin stream data
+        ```bash
+        benchmarker --set-command "ip a s" --set-stdin-data "stdin data here" start
         ```
 

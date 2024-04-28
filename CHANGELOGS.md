@@ -10,6 +10,7 @@
 + [2024-04-19](#2024-04-19)
 + [2024-04-20](#2024-04-20)
 + [2024-04-27](#2024-04-27)
++ [2024-04-28](#2024-04-28)
 
 ## Logs
 ### 2023-12-21
@@ -468,4 +469,51 @@
         + Added information on the decorator functions
     - Updated decorator 'benchmark.py' in 'src/pyutils/decorators/'
         + Implemented new argument key-value to decorator function 'benchmark_custom'
+
+### 2024-04-28
+#### 2232H
+- New
+    + Added new module 'subprocess.py' in 'src/pyutils/libraries/': A library/module that uses subprocess containing functions/implementation of executing commands either via 'subprocess.Popen().communicate()' or print in real time
+
+- Updates
+    - Updated module 'benchmark.py' in 'src/pyutils/decorators/'
+        + Added new benchmark decorator function 'benchmark_loops()' for benchmarking functions by repeating the function N times
+    - Updated benchmarker CLI utility source file 'benchmark.py' in 'src/pyutils/scripts/'
+        + Updated version to 'v0.2.0'
+        + Implemented a working benchmarker CLI utility containing arguments, to be improved
+    - Updated unit test 'test-decorators.py' in 'tests/'
+        + Added unit test for 'benchmark_loops'
+
+#### 2239H
++ Version: v0.3.0
+
+- Version Changes
+    - Bug Fixes
+    - Additions
+        + Added new module 'subprocess.py' in 'src/pyutils/libraries/': A library/module that uses subprocess containing functions/implementation of executing commands either via 'subprocess.Popen().communicate()' or print in real time
+    - Feature Changes
+        - Updated module 'benchmark.py' in 'src/pyutils/decorators/'
+            + Added new benchmark decorator function 'benchmark_loops()' for benchmarking functions by repeating the function N times
+        - Updated benchmarker CLI utility source file 'benchmark.py' in 'src/pyutils/scripts/'
+            + Implemented a working benchmarker CLI utility containing arguments, to be improved
+
+- New
+    + Added new module 'subprocess.py' in 'src/pyutils/libraries/': A library/module that uses subprocess containing functions/implementation of executing commands either via 'subprocess.Popen().communicate()' or print in real time
+
+- Updates
+    - Update document 'README.md'
+        + Updated version to 'v0.3.0'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated version to 'v0.3.0'
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version to 'v0.2.0'
+    - Updated document 'USAGE.md'
+        + Added documentations for CLI utility 'benchmarker'
+    - Updated module 'benchmark.py' in 'src/pyutils/decorators/'
+        + Added new benchmark decorator function 'benchmark_loops()' for benchmarking functions by repeating the function N times
+    - Updated benchmarker CLI utility source file 'benchmark.py' in 'src/pyutils/scripts/'
+        + Updated version to 'v0.2.0'
+        + Implemented a working benchmarker CLI utility containing arguments, to be improved
+    - Updated unit test 'test-decorators.py' in 'tests/'
+        + Added unit test for 'benchmark_loops'
 
