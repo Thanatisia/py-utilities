@@ -50,6 +50,9 @@ asciinema-util = "pyutils.scripts.asciinemawrapper:main"
 apg-generate = "pyutils.scripts.apggenerate:main"
 benchmarker = "pyutils.scripts.benchmark:main"
 de-duplicator = "pyutils.scripts.deduplicator:main"
+threadexec = "pyutils.scripts.threadexec:main"
+git-mass-update = "pyutils.scripts.gitmassupdate:main"
+treewalk = "pyutils.scripts.treetraversal:main"
 
 [project.urls]
 Homepage = "https://github.com/Thanatisia/py-utilities"

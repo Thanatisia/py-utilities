@@ -11,6 +11,7 @@
 + [2024-04-20](#2024-04-20)
 + [2024-04-27](#2024-04-27)
 + [2024-04-28](#2024-04-28)
++ [2024-05-15](#2024-05-15)
 
 ## Logs
 ### 2023-12-21
@@ -516,4 +517,31 @@
         + Implemented a working benchmarker CLI utility containing arguments, to be improved
     - Updated unit test 'test-decorators.py' in 'tests/'
         + Added unit test for 'benchmark_loops'
+
+### 2024-05-15
+#### 1442H
+- New
+    - Added new directory 'man' in 'docs/'
+        - Added new manual directory 'threadexec'
+            + Added new document 'README.md'
+            + Added new template JSON file 'commands.json': example configuration file for threadexec
+        - Added new manual directory 'treeewalk'
+            + Added new document 'README.md'
+        - Added new manual directory 'git-mass-update'
+            + Added new document 'README.md'
+    - Added new library 'treelib.py' in 'src/pyutils/libraries/'
+    - Added new CLI scripts to 'src/pyutils/scripts'
+        + gitmassupdate.py
+        + threadexec.py
+        + treetraversal.py
+
+- Updates
+    - Updated Python packaging configuration file 'pyproject.toml'
+        - Added CLI executables
+            + threadexec
+            + treewalk
+            + git-mass-update
+    - Updated library module 'subprocess.py' in 'src/pyutils/libraries/'
+        + Added library variable 'path_separator' for obtaining the detected operating system's path separator (i.e. '/' for Liux, '\\' for Windows)
+        + Added function 'sync_exec': Uses .communicate() but contains kwargs for customizability
 
