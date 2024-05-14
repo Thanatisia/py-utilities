@@ -2,12 +2,16 @@ List of standalone applications
 ===============================
 
 ## CLI Applications
-+ apg-generate
+- apg-generate
+    - Information
+        + Version: v0.1.0
 - benchmarker
     - Information
         + Version: v0.2.0
         + Status: Work-in-Progress
-+ de-duplicator
+- de-duplicator
+    - Information
+        + Version: v0.1.0
 - asciinema-util
     - Information
         + Version: v0.1.5
@@ -23,4 +27,31 @@ List of standalone applications
             + Debian : Tested
         - Windows: Not Supported due to asciinema (and asciinema-agg) dependency
             + Library 'fcntl' not available on Windows
+- threadexec
+    - Information
+        + Version: v0.1.0
+    - Supported Platforms/Architecture
+        + x86-64 : Tested
+    - Supported Operating Systems
+        - Linux
+            + ArchLinux : Tested
+            + Debian : Tested
+- treewalk
+    - Information
+        + Version: v0.1.0
+    - Supported Platforms/Architecture
+        + x86-64 : Tested
+    - Supported Operating Systems
+        - Linux
+            + ArchLinux : Tested
+            + Debian : Tested
+- git-mass-update
+    - Information
+        + Version: v0.1.0
+    - Supported Platforms/Architecture
+        + x86-64 : Tested
+    - Supported Operating Systems
+        - Linux
+            + ArchLinux : Tested
+            + Debian : Tested
 

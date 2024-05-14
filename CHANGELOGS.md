@@ -545,3 +545,11 @@
         + Added library variable 'path_separator' for obtaining the detected operating system's path separator (i.e. '/' for Liux, '\\' for Windows)
         + Added function 'sync_exec': Uses .communicate() but contains kwargs for customizability
 
+#### 1606H
+- Updates
+    - Updated document 'scripts.md' in 'docs/'
+        - Added new scripts
+            + threadexec
+            + treewalk
+            + git-mass-update
+
