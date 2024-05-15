@@ -46,14 +46,14 @@ def get_git_repositories(root_dir="."):
 
     return all_git_dirs
 
-def print_git_repositories(top_level_root_dir="."):
+def print_git_repositories(top_level_root_dir=".", delimiter="="):
     """
     Get and print all git repositories at the top level directory down
     """
     all_git_dirs = get_git_repositories(root_dir=top_level_root_dir)
 
     # print("All git repositories: {}".format(all_git_dirs))
-    print("Name : Parent")
+    print("Name {} Parent".format(delimiter))
     for dir in all_git_dirs:
         # Split directory into parts
         dir_parts = dir.split(path_separator)
@@ -61,7 +61,7 @@ def print_git_repositories(top_level_root_dir="."):
         dir_parents = path_separator.join(dir_parts[:-1])
         # Get the last element in the list
         dir_name = dir_parts[::-1][0]
-        print("{} : {}".format(dir_name, dir_parents))
+        print("{} {} {}".format(dir_name, delimiter, dir_parents))
 
 def main():
     exec = sys.argv[0]

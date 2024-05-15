@@ -611,3 +611,25 @@
             + treewalk
             + git-mass-update
 
+#### 1041H
++ Version: v0.4.1
+
+- Version Changes
+    - Bug Fixes
+    - Additions
+    - Feature Changes
+        - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+            + Added 'delimiter' into the function argument header of 'print_git_repositores()' for optionals
+            + Replaced delimiter ':' with '=' so as not to collide with system path handling when working with filters
+
+- Updates
+    - Update document 'README.md'
+        + Updated version to 'v0.4.1'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated version to 'v0.4.1'
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version of 'treewalk' to 'v0.1.1'
+    - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+        + Added 'delimiter' into the function argument header of 'print_git_repositores()' for optionals
+        + Replaced delimiter ':' with '=' so as not to collide with system path handling when working with filters
+

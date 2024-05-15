@@ -38,7 +38,7 @@ List of standalone applications
             + Debian : Tested
 - treewalk
     - Information
-        + Version: v0.1.0
+        + Version: v0.1.1
     - Supported Platforms/Architecture
         + x86-64 : Tested
     - Supported Operating Systems
