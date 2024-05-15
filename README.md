@@ -91,6 +91,15 @@
 
 ## Documentations
 
+### Generating Demo animation gif
+- Using Makefile
+    - Pre-Requisites
+    - Optionals
+        + Edit the command by prepending with 'command="[new-command-here]""
+    ```bash
+    make -f docs/documentation.gif record convert
+    ```
+
 ## Wiki
 ### Project Structure
 - root/
