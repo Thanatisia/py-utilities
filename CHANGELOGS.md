@@ -633,3 +633,11 @@
         + Added 'delimiter' into the function argument header of 'print_git_repositores()' for optionals
         + Replaced delimiter ':' with '=' so as not to collide with system path handling when working with filters
 
+#### 1816H
+- New
+    - Added new Makefile 'documentations.Makefile' in 'docs/'
+        + Added custom Makefile specifically for recording screen recording using asciinema and generating documentation GIF by converting the screen recording using asciinema-agg
+- Updates
+    - Updated document 'README.md'
+        + Added documentation step - generating demo animation GIF using aciinema-agg and custom Makefile
+
