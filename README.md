@@ -96,6 +96,8 @@
     - Pre-Requisites
     - Optionals
         + Edit the command by prepending with 'command="[new-command-here]""
+    - Notes
+        + Set 'command=""' to enter into terminal session recording for manual shell input, allowing for manual user input
     ```bash
     make -f docs/documentation.gif record convert
     ```

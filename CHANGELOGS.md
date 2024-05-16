@@ -646,3 +646,10 @@
     - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
         + Adding JSON support and multi-standard output format/type (WIP)
 
+#### 2249H
+- Updates
+    - Updated document 'README.md'
+        + Added new notes for documentation
+    - Updated Makefile 'documentations.Makefile' in 'docs/'
+        + Moved quotation marks from variable into targets/rules for environment variable setting
+

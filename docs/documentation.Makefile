@@ -13,11 +13,11 @@ demo_gif_output_filename ?= output
 demo_gif_output_format ?= gif
 demo_gif_background_theme ?= monokai
 demo_gif_foreground_font ?=
-demo_gif_canvas_size ?= --cols 71 --rows 13
+demo_gif_canvas_size ?= 
 demo_gif_font_size ?= --font-size 16
 #### Asciinema/agg options
 asciinema_options ?= "--overwrite"
-asciinema_agg_options ?= "$(demo_gif_canvas_size) $(demo_gif_font_size) $(demo_gif_foreground_font)"
+asciinema_agg_options ?= $(demo_gif_canvas_size) $(demo_gif_font_size) $(demo_gif_foreground_font)
 
 ### System
 SHELL := bash
@@ -44,5 +44,5 @@ convert:
 		--theme ${demo_gif_background_theme} \
 		--input-terminal-rec-filename ${demo_gif_input_filename} \
 		--output-animation-filename ${demo_gif_output_filename}.${demo_gif_output_format} \
-		--asciinema-agg-opts ${asciinema_agg_options}
+		--asciinema-agg-opts "${asciinema_agg_options}"
 
