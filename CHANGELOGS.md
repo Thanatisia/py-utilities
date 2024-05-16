@@ -641,3 +641,8 @@
     - Updated document 'README.md'
         + Added documentation step - generating demo animation GIF using aciinema-agg and custom Makefile
 
+#### 2219H
+- Updates
+    - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+        + Adding JSON support and multi-standard output format/type (WIP)
+
