@@ -1,6 +1,45 @@
 import os
 import sys
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE, DEVNULL
+
+def sync_exec(cmd_list:list, **kwargs):
+    """
+    Synchronously execute command with state communication
+
+    :: Params
+    - cmd_list : Specify a list of commands to execute
+        + Type: List
+    - **kwargs : Specify all variable-length keyword arguments you wish to pass into subprocess.Popen()
+        + Type: Variable-Length kwargs; Dictionary
+
+    :: Notes
+    - This is similar to 'execute_command_communicate' except this has kwargs
+    """
+    # Initialize Variables
+    rc:int = -1
+    res_stdout = ""
+    res_stderr = ""
+
+    # Open a subprocess pipe to execute the command
+    with Popen(cmd_list, **kwargs) as proc:
+        # Synchronously execute command and communicate
+        res_stdout, res_stderr = proc.communicate()
+
+        # Get result status code
+        rc = proc.returncode
+
+    # Decode results
+    if (res_stdout != None):
+        res_stdout = res_stdout.decode("utf-8")
+    else:
+        res_stdout = ""
+    if (res_stderr != None):
+        res_stderr = res_stderr.decode("utf-8")
+    else:
+        res_stderr = ""
+
+    # Return result
+    return [res_stdout, res_stderr, rc]
 
 def execute_command_communicate(cmd_list, stream_input=None):
     """

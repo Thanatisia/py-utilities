@@ -14,6 +14,9 @@
     + de-duplicator
     + apg-generate
     + asciinema-util
+    + git-mass-update
+    + threadexec
+    + treewalk
 
 ## Decorators
 ### benchmark
