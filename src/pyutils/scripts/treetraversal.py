@@ -51,11 +51,19 @@ def print_tree_branches(tree_branch_mappings, filters="all", delimiter="=", stdo
                         print("{} {} {}".format(k, delimiter, v))
                 case "json":
                     # Initialize variables
-                    json_contents = {}
+                    json_contents = []
 
                     for k,v in tree_branch_mappings.items():
-                        # Map the directory name to the paths
-                        json_contents[k] = v
+                        # Initialize a new JSON entry for current directory
+                        curr_branch_json = {}
+
+                        # Map the 'name' key to the directory name
+                        curr_branch_json["path"] = k
+                        # Map the 'path' key to the directory path
+                        curr_branch_json["contents"] = v
+
+                        # Append into list
+                        json_contents.append(curr_branch_json)
 
                     # Format the dictionary object into a JSON string
                     json_str = dumps(json_contents, **json_dump_opts)
@@ -72,16 +80,25 @@ def print_tree_branches(tree_branch_mappings, filters="all", delimiter="=", stdo
                         print("{} {} {}".format(k, delimiter, curr_branch_files))
                 case "json":
                     # Initialize variables
-                    json_contents = {}
+                    json_contents = []
 
                     for k,v in tree_branch_mappings.items():
+                        # Initialize a new JSON entry for current directory
+                        curr_branch_json = {}
+
                         # Obtain file vlaues
                         curr_branch_files = v["files"]
-                        # Map the directory name to the paths
-                        json_contents[k] = curr_branch_files
+
+                        # Map the 'name' key to the directory name
+                        curr_branch_json["path"] = k
+                        # Map the 'path' key to the directory path
+                        curr_branch_json["contents"] = { "files" : curr_branch_files }
+
+                        # Append into list
+                        json_contents.append(curr_branch_json)
 
                     # Format the dictionary object into a JSON string
-                    json_str = dumps(json_contents)
+                    json_str = dumps(json_contents, **json_dump_opts)
 
                     # Print the JSON string
                     print(json_str)
@@ -95,16 +112,25 @@ def print_tree_branches(tree_branch_mappings, filters="all", delimiter="=", stdo
                         print("{} {} {}".format(k, delimiter, curr_branch_directories))
                 case "json":
                     # Initialize variables
-                    json_contents = {}
+                    json_contents = []
 
                     for k,v in tree_branch_mappings.items():
-                        # Obtain file vlaues
+                        # Initialize a new JSON entry for current directory
+                        curr_branch_json = {}
+
+                        # Obtain directory values
                         curr_branch_directories = v["directories"]
-                        # Map the directory name to the paths
-                        json_contents[k] = curr_branch_directories
+
+                        # Map the 'name' key to the directory name
+                        curr_branch_json["path"] = k
+                        # Map the 'path' key to the directory path
+                        curr_branch_json["contents"] = { "directories" : curr_branch_directories }
+
+                        # Append into list
+                        json_contents.append(curr_branch_json)
 
                     # Format the dictionary object into a JSON string
-                    json_str = dumps(json_contents)
+                    json_str = dumps(json_contents, **json_dump_opts)
 
                     # Print the JSON string
                     print(json_str)
@@ -174,16 +200,26 @@ def print_git_repositories(top_level_root_dir=".", delimiter="=", stdout_type="t
                 print("{} {} {}".format(dir_name, delimiter, dir_parents))
         case "json":
             # Initialize variable
-            json_contents = {}
+            json_contents = []
+
             for dir in all_git_dirs:
+                # Initialize a new JSON entry for current directory
+                curr_git_json = {}
+
                 # Split directory into parts
                 dir_parts = dir.split(path_separator)
                 # Get every element in the list until the second last element, and merge them together with the "/" delimiter
                 dir_parents = path_separator.join(dir_parts[:-1])
                 # Get the last element in the list
                 dir_name = dir_parts[::-1][0]
-                # Map the directory name to the paths
-                json_contents[dir_name] = dir_parents
+
+                # Map the 'name' key to the directory name
+                curr_git_json["name"] = dir_name
+                # Map the 'path' key to the directory path
+                curr_git_json["path"] = dir_parents
+
+                # Append into list
+                json_contents.append(curr_git_json)
 
             # Format the dictionary object into a JSON string
             json_str = dumps(json_contents, **json_dump_opts)

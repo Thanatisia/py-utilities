@@ -13,6 +13,7 @@
 + [2024-04-28](#2024-04-28)
 + [2024-05-15](#2024-05-15)
 + [2024-05-16](#2024-05-16)
++ [2024-05-18](#2024-05-18)
 
 ## Logs
 ### 2023-12-21
@@ -652,4 +653,10 @@
         + Added new notes for documentation
     - Updated Makefile 'documentations.Makefile' in 'docs/'
         + Moved quotation marks from variable into targets/rules for environment variable setting
+
+### 2024-05-18
+#### 0742H
+- Updates
+    - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+        + Modified JSON export: Each entry is to be an entry in a list instead of an individual key-value mapping for better JSON support and readability
 
