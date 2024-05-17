@@ -668,3 +668,16 @@
         + Relocated the user input request so that it doesnt collide with the initial input
 
 
+#### 1743H
+- New
+    - Added new CLI scripts to 'src/pyutils/scripts'
+        + metasearch.py
+        + sysenvbufhndlr.py
+- Updates
+    - Updated python packaging configuration file 'pyproject.toml'
+        - Added CLI executables
+            + metasearch
+            + sysenvhndlr
+    - Updated library 'utils.py' in 'src/pyutils/libraries/'
+        + Added size-related functions
+

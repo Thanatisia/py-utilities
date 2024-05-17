@@ -53,6 +53,8 @@ de-duplicator = "pyutils.scripts.deduplicator:main"
 threadexec = "pyutils.scripts.threadexec:main"
 git-mass-update = "pyutils.scripts.gitmassupdate:main"
 treewalk = "pyutils.scripts.treetraversal:main"
+sysenvhndlr = "pyutils.scripts.sysenvbufhndlr:main"
+metasearch = "pyutils.scripts.metasearch:main"
 
 [project.urls]
 Homepage = "https://github.com/Thanatisia/py-utilities"
