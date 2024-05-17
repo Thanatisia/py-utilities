@@ -660,3 +660,11 @@
     - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
         + Modified JSON export: Each entry is to be an entry in a list instead of an individual key-value mapping for better JSON support and readability
 
+#### 1558H
+- Updates
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version of 'threadexec' to 'v0.1.1'
+    - Updated script 'threadexec.py' in 'src/pyutils/scripts'
+        + Relocated the user input request so that it doesnt collide with the initial input
+
+

@@ -77,9 +77,6 @@ def main():
         print("Please enter all your commands to execute (Press 'enter' without any texts to exit): ")
         line = input("> ")
         while line:
-            # Get next line
-            line = input("> ")
-
             # Check if line is empty
             if line != "":
                 # Split the line into a list
@@ -89,6 +86,8 @@ def main():
                 argv.append(curr_command_list)
             else:
                 break
+            # Get next line
+            line = input("> ")
 
     # Get argument count
     argc = len(argv)
