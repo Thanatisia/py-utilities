@@ -691,3 +691,9 @@
         + Added flag 'remove_empty' to remove all empty elements if enabled
         + Added new library import 'src/pyutils/libraries/blob.py'
 
+#### 2358H
+- Updates
+    - Updated script 'sysenvbufhndlr.py' in 'src/pyutils/scripts'
+        + Removed newlines
+        + Reformatted information strings
+

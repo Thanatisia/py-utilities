@@ -223,6 +223,7 @@ def main():
     number_of_options_with_arguments = len(optional_with_Arguments)
     number_of_options_Flags = len(optional_Flags)
     json_objects = []
+    stdstream = {"stdout" : [], "stderr" : []} # Standard Stream contents
 
     # Iterate through optionals
     for opt_category,opt_category_values in optionals.items():
@@ -268,8 +269,6 @@ def main():
         if optional_Flags["show-optional-arguments"] == True:
             print("[i] Optional Arguments: {}".format(optional_with_Arguments))
             print("[i] Optional Flags: {}".format(optional_Flags))
-
-        print("")
 
         # Check if positionals provided
         if number_of_positionals > 0:
@@ -317,8 +316,6 @@ def main():
                                 case _:
                                     ## Invalid format
                                     print("Invalid format: {}".format(optional_with_Arguments["export-format"]))
-
-                            print("")
                         case "split":
                             # Get delimiter
                             if ("delimiter" in optional_with_Arguments) and (optional_with_Arguments["delimiter"] != ""):
@@ -343,8 +340,7 @@ def main():
                             match optional_with_Arguments["export-format"]:
                                 case "text":
                                     # Print results
-                                    print(env_value_split)
-                                    print("Number of values: {}".format(len(env_value_split)))
+                                    print(env_value_split, "Number of values: {}".format(len(env_value_split)))
                                 case "json":
                                     ## Prepare dictionary object to import/parse into a JSON-formatted string
                                     json_obj = [{"key" : curr_env_key, "value" : env_value_split}]
@@ -357,8 +353,6 @@ def main():
                                 case _:
                                     ## Invalid format
                                     print("Invalid format: {}".format(optional_with_Arguments["export-format"]))
-
-                            print("")
                         case _:
                             # Default
                             print("[i] No actions provided.")
