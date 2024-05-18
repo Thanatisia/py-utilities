@@ -681,3 +681,13 @@
     - Updated library 'utils.py' in 'src/pyutils/libraries/'
         + Added size-related functions
 
+#### 2334H
+- New
+    + Added new library 'blob.py' in 'src/pyutils/libraries' containing functions and utilities for file object handling
+- Updates
+    - Updated script 'metasearch.py' in 'src/pyutils/scripts'
+        + Removed unused dependencies
+        + Migrated function 'search_metadata()' to 'src/pyutils/libraries/blob.py' with new function name 'search_files_by_metadata()'
+        + Added flag 'remove_empty' to remove all empty elements if enabled
+        + Added new library import 'src/pyutils/libraries/blob.py'
+
