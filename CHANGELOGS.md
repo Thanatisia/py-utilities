@@ -707,3 +707,21 @@
         + Appended 'demo_gif_process_options' to 'asciinema_agg_opts'
         + Moved quotation marks from variable 'asciinema_options' into targets/rules for environment variable setting
 
+#### 2319H
+- Updates
+    - Updated script 'threadexec.py' in 'src/pyutils/scripts'
+        - Added CLI support: Passing all your command strings via the CLI arguments.
+            + Please separate all your command strings with a space delimiter (' ')
+            + TODO: Add CLI positional and optional arguments support
+        + Added new flag variable 'verbose' : To enable/disable verbose standard output (will be used with '-V | --verbose'
+        - Added new optional argument variable 'export_format' : To specify the standard output export/print format
+            + Currently supported:
+                + text : Standard text output
+                + json : Print the dictionary object as a JSON-formatted and parsed string
+        + Added new argument to function 'exec': index
+        - Added new standard output export/printing format: JSON
+            + Store the results in a 'results_mapping' dictionary : An all-in-one dictionary containing the thread and task details
+            + The index of the thread when added is passed into the multithreading function (that will be executed by the processes) as an argument
+            - The results_mapping dictionary will use the passed index as an identifier as to which list to append the subprocess stdout and stderr to
+                + TLDR: Store the results concurrently into the appropriate lists based on the passed index
+
