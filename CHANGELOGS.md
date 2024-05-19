@@ -725,3 +725,17 @@
             - The results_mapping dictionary will use the passed index as an identifier as to which list to append the subprocess stdout and stderr to
                 + TLDR: Store the results concurrently into the appropriate lists based on the passed index
 
+#### 2322H
+- New
+    + Added new document 'demo.md' containing the markdown with all the demo animation GIF
+    - Added new directory 'resources' : For holding resource files
+        - Added new directory 'demo' : For holding demo-based resources
+            - Added new directory 'gifs' : For holding software/project documentation demo animation GIFs
+                + Added new GIF: 'metasearch.gif'
+                + Added new GIF: 'sysenvhndlr.gif'
+                + Added new GIF: 'threadexec-cli.gif'
+                + Added new GIF: 'treewalk.gif'
+- Updates
+    - Updated document 'README.md'
+        + Added new section for demo animation GIFs
+

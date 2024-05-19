@@ -91,6 +91,9 @@
 
 ## Documentations
 
+### Demo
++ Please refer to [demo.md](demo.md) for all demo animation GIFs and examples
+
 ### Generating Demo animation gif
 - Using Makefile
     - Pre-Requisites
