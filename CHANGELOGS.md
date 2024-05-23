@@ -15,6 +15,7 @@
 + [2024-05-16](#2024-05-16)
 + [2024-05-18](#2024-05-18)
 + [2024-05-19](#2024-05-19)
++ [2024-05-23](#2024-05-23)
 
 ## Logs
 ### 2023-12-21
@@ -738,4 +739,36 @@
 - Updates
     - Updated document 'README.md'
         + Added new section for demo animation GIFs
+
+### 2024-05-23
+#### 2010H
+- Updates
+    - Updated document 'README.md' in 'docs/man/treewalk'
+        + Updated Notice/notes
+        + Updated subheader block 'Documentations' with new synopsis/syntax, optionals and usages basing off the changes
+    + Updated demo animated gif 'treewalk.md' with a latest demo
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version of 'treewalk' to 'v0.2.0'
+    - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+        + Added CLI argument parsing support
+        + Removed positional argument requirements in favor of moving to the use of CLI argument parsing and optional parameters with a default value set if not specified
+        + Added new flag variable 'verbose' : To enable/disable verbose standard output (will be used with '-V | --verbose'
+        - Added new optional argument variable 'export_format' : To specify the standard output export/print format; Use the '-x | --export-format <format>' argument
+            + Default Value: text
+            + Currently supported:
+                + text : Standard text output
+                + json : Print the dictionary object as a JSON-formatted and parsed string
+        - Added new optional argument variable 'filter' : To explicitly specify the object type to obtain (i.e. files, directories, both); Use the '-f | --filter <filter>' argument
+            + Default Value: all
+            - Currently supported:
+                + all : Search and return all files and (sub)directories found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+                + files : Search and return all files found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+                + directories : Search and return all (sub)directories found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+        - Added new optional argument variable 'search_category' : To explicitly specify a target topic/category to search for; ; Use the '-s | --search-category <category>' argument
+            + Default Value: tree
+            - Currently supported:
+                + tree : Search for generic files and directories found in the specified top-level root directory of the tree
+                + git : Search for git repositories using the existence of a '.git' as an identifier found in the specified top-level root directory of the tree
+        - Added new optional argument variable 'top-level-root-dirs' : To explicitly specify the top-level root directory of the tree to begin traversing; Use the '-t | --top-level-root-dirs <directory-path>'  argument
+
 
