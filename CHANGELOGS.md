@@ -16,6 +16,7 @@
 + [2024-05-18](#2024-05-18)
 + [2024-05-19](#2024-05-19)
 + [2024-05-23](#2024-05-23)
++ [2024-05-26](#2024-05-26)
 
 ## Logs
 ### 2023-12-21
@@ -770,5 +771,39 @@
                 + tree : Search for generic files and directories found in the specified top-level root directory of the tree
                 + git : Search for git repositories using the existence of a '.git' as an identifier found in the specified top-level root directory of the tree
         - Added new optional argument variable 'top-level-root-dirs' : To explicitly specify the top-level root directory of the tree to begin traversing; Use the '-t | --top-level-root-dirs <directory-path>'  argument
+
+### 2024-05-26
+#### 2204H
+- New
+    - Added new directory 'lib/' in 'docs/' for Documentations to libraries and frameworks
+        - Added new directory 'decorators/ for Documentations to decorator function libraries in the package
+            - Added new directory 'benchmark' for Documentations to the benchmark decorator function library
+                + Added new document 'README.md'
+        - Added new directory 'modules/' for Documentations to module/library files in the package
+            - Added new directory 'apg' for Documentations to the Android Project Generator (APG) core library module
+                + Added new document 'README.md'
+            - Added new directory 'sqlite_lib' for Documentations to the sqlite_lib SQLite3 helper library module
+                + Added new document 'README.md'
+    - Added new directory 'apg-generate' in 'docs/man/' for documentations to the CLI utility/script 'apg-generate'
+        + Added new document 'README.md'
+    - Added new directory 'asciinema-util' in 'docs/man/' for documentations to the CLI utility/script 'asciinema-util'
+        + Added new document 'README.md'
+    - Added new directory 'benchmarker' in 'docs/man/' for documentations to the CLI utility/script 'benchmarker'
+        + Added new document 'README.md'
+    - Added new directory 'de-duplicator' in 'docs/man/' for documentations to the CLI utility/script 'de-duplicator'
+        + Added new document 'README.md'
+    - Added new directory 'metasearch' in 'docs/man/' for documentations to the CLI utility/script 'metasearch'
+        + Added new document 'README.md'
+    - Added new directory 'sysenvhndlr' in 'docs/man/' for documentations to the CLI utility/script 'sysenvhndlr'
+        + Added new document 'README.md'
+- Updates
+    - Updated document 'USAGE.md'
+        + Migrated documentations to 'docs/'
+        + Updated USAGE file with details to the various locations and acts as a quickstart guide to using the project
+    - Updated document 'README.md' in 'docs/man/threadexec/'
+        + Added system flow
+        + Updated documentations and parameters
+    - Updated document 'scripts.md' in 'docs/'
+        + Added new CLI utility/script entries 'sysenvhndlr' and 'metasearch'
 
 

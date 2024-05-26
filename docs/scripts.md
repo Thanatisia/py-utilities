@@ -54,4 +54,22 @@ List of standalone applications
         - Linux
             + ArchLinux : Tested
             + Debian : Tested
+- sysenvhndlr
+    - Information
+        + Version: v0.1.0
+    - Supported Platforms/Architecture
+        + x86-64 : Tested
+    - Supported Operating Systems
+        - Linux
+            + ArchLinux : Tested
+            + Debian : Tested
+- metasearch 
+    - Information
+        + Version: v0.1.0
+    - Supported Platforms/Architecture
+        + x86-64 : Tested
+    - Supported Operating Systems
+        - Linux
+            + ArchLinux : Tested
+            + Debian : Tested
 

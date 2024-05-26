@@ -10,6 +10,11 @@
 3. Execute all the threads in the pool concurrently and wait for them to be completed
 4. Receive all standard outputs (if any)
 
+### System Flow
+- the application will look for commands passed via CLI positionals arguments.
+    - If no commands are passed via positional arguments, the application will look for the commands list titled 'commands.json'
+        + If commands.json is not found, it will then get the user's commands via user input
+
 ## Setup
 ### Dependencies
 
@@ -17,6 +22,7 @@
 - Prepare the JSON configuration file 'commands.json' containing all the tasks you wish to execute multithreaded
     - Explanation
         - the key 'tasks' holds all commands (aka 'tasks') you wish to be executed concurrently in separate threads
+            + Please refer to [Configurations](#configurations) for a full template
     ```json
     {
         "tasks" : [
@@ -48,12 +54,29 @@
 
 ### Synopsis/Syntax
 ```bash
-threadexec {options} <arguments
+threadexec {options} <arguments> [command-strings ...]
 ```
 
 ### Parameters
+- Positionals
+    - command-strings : Specify a list of command strings you wish to execute. Each command will be executed in its own individual thread/process and once setup is completed, the entire pool of tasks (aka commands) will be executed concurrently.
+        + Type: List
+
+- Optionals
+    - With Arguments
+    - Flags
 
 ### Usage
+- Execute a set of command strings and output the results as JSON string
+    ```bash
+    threadexec "commands" "to" "be" "executed"
+    ```
+
+- Execute a set of command strings, output the results as JSON string and format the output using jq
+    - Obtain the results, command, stdout and stderr
+        ```bash
+        threadexec "commands" "to" "be" "executed" | jq -c '.results[] | .command, .stream.stdout, .stream.stderr' -r
+        ```
 
 ## TODO
 + Asynchronous execution
