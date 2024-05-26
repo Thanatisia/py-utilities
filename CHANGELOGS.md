@@ -806,4 +806,22 @@
     - Updated document 'scripts.md' in 'docs/'
         + Added new CLI utility/script entries 'sysenvhndlr' and 'metasearch'
 
+#### 2307H
+- New
+    - Added new documentation directory 'blob' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'subprocess' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'treelib' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'utils' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+- Updates
+    - Updated document 'USAGE.md'
+        + Updated header from 'Development' to 'Development and Implementations'
+        - Added new entries to the path to documentations - libraries
+            + blob
+            + subprocess
+            + treelib
+            + utils
 

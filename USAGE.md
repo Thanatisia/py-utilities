@@ -1,15 +1,19 @@
 # USAGE and Recipes
 
 ## Table of Contents
-+ [Development](#development)
++ [Development and Implementations](#development-and-implementations)
 
-### Development
+### Development and Implementations
 - Usage and Manuals
     - [docs/lib/decorators](docs/lib/decorators) : for documentations pertaining to usage of the package's decorator function libraries
         + [benchmark](docs/lib/decorators/benchmark/README.md)
     - [docs/lib/modules](docs/lib/modules) : for documentations pertaining to usage of the package's library modules
         + [apg](docs/lib/modules/apg/README.md)
+        + [blob](docs/lib/modules/blob/README.md)
         + [sqlite_lib](docs/lib/modules/sqlite_lib/README.md)
+        + [subprocess](docs/lib/modules/subprocess/README.md)
+        + [treelib](docs/lib/modules/treelib/README.md)
+        + [utils](docs/lib/modules/utils/README.md)
     - [docs/man](docs/man) : for documentations to the package CLI scripts/utilities and usages
         + [apg-generate](docs/man/apg-generate/README.md)
         + [asciinema-util](docs/man/asciinema-util/README.md)
