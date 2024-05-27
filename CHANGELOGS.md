@@ -13,6 +13,11 @@
 + [2024-04-28](#2024-04-28)
 + [2024-05-15](#2024-05-15)
 + [2024-05-16](#2024-05-16)
++ [2024-05-18](#2024-05-18)
++ [2024-05-19](#2024-05-19)
++ [2024-05-23](#2024-05-23)
++ [2024-05-26](#2024-05-26)
++ [2024-05-27](#2024-05-27)
 
 ## Logs
 ### 2023-12-21
@@ -640,4 +645,399 @@
 - Updates
     - Updated document 'README.md'
         + Added documentation step - generating demo animation GIF using aciinema-agg and custom Makefile
+
+#### 2219H
+- Updates
+    - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+        + Adding JSON support and multi-standard output format/type (WIP)
+
+#### 2249H
+- Updates
+    - Updated document 'README.md'
+        + Added new notes for documentation
+    - Updated Makefile 'documentations.Makefile' in 'docs/'
+        + Moved quotation marks from variable into targets/rules for environment variable setting
+
+### 2024-05-18
+#### 0742H
+- Updates
+    - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+        + Modified JSON export: Each entry is to be an entry in a list instead of an individual key-value mapping for better JSON support and readability
+
+#### 1558H
+- Updates
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version of 'threadexec' to 'v0.1.1'
+    - Updated script 'threadexec.py' in 'src/pyutils/scripts'
+        + Relocated the user input request so that it doesnt collide with the initial input
+
+
+#### 1743H
+- New
+    - Added new CLI scripts to 'src/pyutils/scripts'
+        + metasearch.py
+        + sysenvbufhndlr.py
+- Updates
+    - Updated python packaging configuration file 'pyproject.toml'
+        - Added CLI executables
+            + metasearch
+            + sysenvhndlr
+    - Updated library 'utils.py' in 'src/pyutils/libraries/'
+        + Added size-related functions
+
+#### 2334H
+- New
+    + Added new library 'blob.py' in 'src/pyutils/libraries' containing functions and utilities for file object handling
+- Updates
+    - Updated script 'metasearch.py' in 'src/pyutils/scripts'
+        + Removed unused dependencies
+        + Migrated function 'search_metadata()' to 'src/pyutils/libraries/blob.py' with new function name 'search_files_by_metadata()'
+        + Added flag 'remove_empty' to remove all empty elements if enabled
+        + Added new library import 'src/pyutils/libraries/blob.py'
+
+#### 2358H
+- Updates
+    - Updated script 'sysenvbufhndlr.py' in 'src/pyutils/scripts'
+        + Removed newlines
+        + Reformatted information strings
+
+### 2024-05-19
+#### 0751H
+- Updates
+    - Updated Makefile 'documentations.Makefile' in 'docs/'
+        + Set default value for 'command' variable to ' ' (Empty)
+        + Added new variable 'demo_gif_process_options' for all GIF backend processing to pass into 'asciinema-agg'
+        + Appended 'demo_gif_process_options' to 'asciinema_agg_opts'
+        + Moved quotation marks from variable 'asciinema_options' into targets/rules for environment variable setting
+
+#### 2319H
+- Updates
+    - Updated script 'threadexec.py' in 'src/pyutils/scripts'
+        - Added CLI support: Passing all your command strings via the CLI arguments.
+            + Please separate all your command strings with a space delimiter (' ')
+            + TODO: Add CLI positional and optional arguments support
+        + Added new flag variable 'verbose' : To enable/disable verbose standard output (will be used with '-V | --verbose'
+        - Added new optional argument variable 'export_format' : To specify the standard output export/print format
+            + Currently supported:
+                + text : Standard text output
+                + json : Print the dictionary object as a JSON-formatted and parsed string
+        + Added new argument to function 'exec': index
+        - Added new standard output export/printing format: JSON
+            + Store the results in a 'results_mapping' dictionary : An all-in-one dictionary containing the thread and task details
+            + The index of the thread when added is passed into the multithreading function (that will be executed by the processes) as an argument
+            - The results_mapping dictionary will use the passed index as an identifier as to which list to append the subprocess stdout and stderr to
+                + TLDR: Store the results concurrently into the appropriate lists based on the passed index
+
+#### 2322H
+- New
+    + Added new document 'demo.md' containing the markdown with all the demo animation GIF
+    - Added new directory 'resources' : For holding resource files
+        - Added new directory 'demo' : For holding demo-based resources
+            - Added new directory 'gifs' : For holding software/project documentation demo animation GIFs
+                + Added new GIF: 'metasearch.gif'
+                + Added new GIF: 'sysenvhndlr.gif'
+                + Added new GIF: 'threadexec-cli.gif'
+                + Added new GIF: 'treewalk.gif'
+- Updates
+    - Updated document 'README.md'
+        + Added new section for demo animation GIFs
+
+### 2024-05-23
+#### 2010H
+- Updates
+    - Updated document 'README.md' in 'docs/man/treewalk'
+        + Updated Notice/notes
+        + Updated subheader block 'Documentations' with new synopsis/syntax, optionals and usages basing off the changes
+    + Updated demo animated gif 'treewalk.md' with a latest demo
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version of 'treewalk' to 'v0.2.0'
+    - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+        + Added CLI argument parsing support
+        + Removed positional argument requirements in favor of moving to the use of CLI argument parsing and optional parameters with a default value set if not specified
+        + Added new flag variable 'verbose' : To enable/disable verbose standard output (will be used with '-V | --verbose'
+        - Added new optional argument variable 'export_format' : To specify the standard output export/print format; Use the '-x | --export-format <format>' argument
+            + Default Value: text
+            + Currently supported:
+                + text : Standard text output
+                + json : Print the dictionary object as a JSON-formatted and parsed string
+        - Added new optional argument variable 'filter' : To explicitly specify the object type to obtain (i.e. files, directories, both); Use the '-f | --filter <filter>' argument
+            + Default Value: all
+            - Currently supported:
+                + all : Search and return all files and (sub)directories found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+                + files : Search and return all files found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+                + directories : Search and return all (sub)directories found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+        - Added new optional argument variable 'search_category' : To explicitly specify a target topic/category to search for; ; Use the '-s | --search-category <category>' argument
+            + Default Value: tree
+            - Currently supported:
+                + tree : Search for generic files and directories found in the specified top-level root directory of the tree
+                + git : Search for git repositories using the existence of a '.git' as an identifier found in the specified top-level root directory of the tree
+        - Added new optional argument variable 'top-level-root-dirs' : To explicitly specify the top-level root directory of the tree to begin traversing; Use the '-t | --top-level-root-dirs <directory-path>'  argument
+
+### 2024-05-26
+#### 2204H
+- New
+    - Added new directory 'lib/' in 'docs/' for Documentations to libraries and frameworks
+        - Added new directory 'decorators/ for Documentations to decorator function libraries in the package
+            - Added new directory 'benchmark' for Documentations to the benchmark decorator function library
+                + Added new document 'README.md'
+        - Added new directory 'modules/' for Documentations to module/library files in the package
+            - Added new directory 'apg' for Documentations to the Android Project Generator (APG) core library module
+                + Added new document 'README.md'
+            - Added new directory 'sqlite_lib' for Documentations to the sqlite_lib SQLite3 helper library module
+                + Added new document 'README.md'
+    - Added new directory 'apg-generate' in 'docs/man/' for documentations to the CLI utility/script 'apg-generate'
+        + Added new document 'README.md'
+    - Added new directory 'asciinema-util' in 'docs/man/' for documentations to the CLI utility/script 'asciinema-util'
+        + Added new document 'README.md'
+    - Added new directory 'benchmarker' in 'docs/man/' for documentations to the CLI utility/script 'benchmarker'
+        + Added new document 'README.md'
+    - Added new directory 'de-duplicator' in 'docs/man/' for documentations to the CLI utility/script 'de-duplicator'
+        + Added new document 'README.md'
+    - Added new directory 'metasearch' in 'docs/man/' for documentations to the CLI utility/script 'metasearch'
+        + Added new document 'README.md'
+    - Added new directory 'sysenvhndlr' in 'docs/man/' for documentations to the CLI utility/script 'sysenvhndlr'
+        + Added new document 'README.md'
+- Updates
+    - Updated document 'USAGE.md'
+        + Migrated documentations to 'docs/'
+        + Updated USAGE file with details to the various locations and acts as a quickstart guide to using the project
+    - Updated document 'README.md' in 'docs/man/threadexec/'
+        + Added system flow
+        + Updated documentations and parameters
+    - Updated document 'scripts.md' in 'docs/'
+        + Added new CLI utility/script entries 'sysenvhndlr' and 'metasearch'
+
+#### 2307H
+- New
+    - Added new documentation directory 'blob' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'subprocess' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'treelib' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'utils' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+- Updates
+    - Updated document 'USAGE.md'
+        + Updated header from 'Development' to 'Development and Implementations'
+        - Added new entries to the path to documentations - libraries
+            + blob
+            + subprocess
+            + treelib
+            + utils
+
+### 2024-05-27
+#### 0939H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.5
+
+#### 0951H
++ Version: v0.5.0
+
+- Version Changes
+    - Bug Fixes
+    - Additions
+        - Added new CLI scripts to 'src/pyutils/scripts'
+            + metasearch.py
+            + sysenvbufhndlr.py
+        + Added new library 'blob.py' in 'src/pyutils/libraries' containing functions and utilities for file object handling
+    - Feature Changes
+        - Updated Makefile 'documentations.Makefile' in 'docs/'
+            + Moved quotation marks from variable into targets/rules for environment variable setting
+            + Set default value for 'command' variable to ' ' (Empty)
+            + Added new variable 'demo_gif_process_options' for all GIF backend processing to pass into 'asciinema-agg'
+            + Appended 'demo_gif_process_options' to 'asciinema_agg_opts'
+            + Moved quotation marks from variable 'asciinema_options' into targets/rules for environment variable setting
+        - Updated python packaging configuration file 'pyproject.toml'
+            - Added CLI executables
+                + metasearch
+                + sysenvhndlr
+            + Updated version to 'v0.5.0'
+        - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+            + Adding JSON support and multi-standard output format/type (WIP)
+            + Modified JSON export: Each entry is to be an entry in a list instead of an individual key-value mapping for better JSON support and readability
+            + Added CLI argument parsing support
+            + Removed positional argument requirements in favor of moving to the use of CLI argument parsing and optional parameters with a default value set if not specified
+            + Added new flag variable 'verbose' : To enable/disable verbose standard output (will be used with '-V | --verbose'
+            - Added new optional argument variable 'export_format' : To specify the standard output export/print format; Use the '-x | --export-format <format>' argument
+                + Default Value: text
+                + Currently supported:
+                    + text : Standard text output
+                    + json : Print the dictionary object as a JSON-formatted and parsed string
+            - Added new optional argument variable 'filter' : To explicitly specify the object type to obtain (i.e. files, directories, both); Use the '-f | --filter <filter>' argument
+                + Default Value: all
+                - Currently supported:
+                    + all : Search and return all files and (sub)directories found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+                    + files : Search and return all files found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+                    + directories : Search and return all (sub)directories found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+            - Added new optional argument variable 'search_category' : To explicitly specify a target topic/category to search for; ; Use the '-s | --search-category <category>' argument
+                + Default Value: tree
+                - Currently supported:
+                    + tree : Search for generic files and directories found in the specified top-level root directory of the tree
+                    + git : Search for git repositories using the existence of a '.git' as an identifier found in the specified top-level root directory of the tree
+            - Added new optional argument variable 'top-level-root-dirs' : To explicitly specify the top-level root directory of the tree to begin traversing; Use the '-t | --top-level-root-dirs <directory-path>'  argument
+        - Updated script 'threadexec.py' in 'src/pyutils/scripts'
+            + Relocated the user input request so that it doesnt collide with the initial input
+            - Added CLI support: Passing all your command strings via the CLI arguments.
+                + Please separate all your command strings with a space delimiter (' ')
+                + TODO: Add CLI positional and optional arguments support
+            + Added new flag variable 'verbose' : To enable/disable verbose standard output (will be used with '-V | --verbose'
+            - Added new optional argument variable 'export_format' : To specify the standard output export/print format
+                + Currently supported:
+                    + text : Standard text output
+                    + json : Print the dictionary object as a JSON-formatted and parsed string
+            + Added new argument to function 'exec': index
+            - Added new standard output export/printing format: JSON
+                + Store the results in a 'results_mapping' dictionary : An all-in-one dictionary containing the thread and task details
+                + The index of the thread when added is passed into the multithreading function (that will be executed by the processes) as an argument
+                - The results_mapping dictionary will use the passed index as an identifier as to which list to append the subprocess stdout and stderr to
+                    + TLDR: Store the results concurrently into the appropriate lists based on the passed index
+        - Updated library 'utils.py' in 'src/pyutils/libraries/'
+            + Added size-related functions
+        - Updated script 'metasearch.py' in 'src/pyutils/scripts'
+            + Removed unused dependencies
+            + Migrated function 'search_metadata()' to 'src/pyutils/libraries/blob.py' with new function name 'search_files_by_metadata()'
+            + Added flag 'remove_empty' to remove all empty elements if enabled
+            + Added new library import 'src/pyutils/libraries/blob.py'
+        - Updated script 'sysenvbufhndlr.py' in 'src/pyutils/scripts'
+            + Removed newlines
+            + Reformatted information strings
+        - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+            + Updated version to v0.1.5
+
+- New
+    - Added new CLI scripts to 'src/pyutils/scripts'
+        + metasearch.py
+        + sysenvbufhndlr.py
+    + Added new library 'blob.py' in 'src/pyutils/libraries' containing functions and utilities for file object handling
+    + Added new document 'demo.md' containing the markdown with all the demo animation GIF
+    - Added new directory 'resources' : For holding resource files
+        - Added new directory 'demo' : For holding demo-based resources
+            - Added new directory 'gifs' : For holding software/project documentation demo animation GIFs
+                + Added new GIF: 'metasearch.gif'
+                + Added new GIF: 'sysenvhndlr.gif'
+                + Added new GIF: 'threadexec-cli.gif'
+                + Added new GIF: 'treewalk.gif'
+    - Added new directory 'lib/' in 'docs/' for Documentations to libraries and frameworks
+        - Added new directory 'decorators/ for Documentations to decorator function libraries in the package
+            - Added new directory 'benchmark' for Documentations to the benchmark decorator function library
+                + Added new document 'README.md'
+        - Added new directory 'modules/' for Documentations to module/library files in the package
+            - Added new directory 'apg' for Documentations to the Android Project Generator (APG) core library module
+                + Added new document 'README.md'
+            - Added new directory 'sqlite_lib' for Documentations to the sqlite_lib SQLite3 helper library module
+                + Added new document 'README.md'
+    - Added new directory 'apg-generate' in 'docs/man/' for documentations to the CLI utility/script 'apg-generate'
+        + Added new document 'README.md'
+    - Added new directory 'asciinema-util' in 'docs/man/' for documentations to the CLI utility/script 'asciinema-util'
+        + Added new document 'README.md'
+    - Added new directory 'benchmarker' in 'docs/man/' for documentations to the CLI utility/script 'benchmarker'
+        + Added new document 'README.md'
+    - Added new directory 'de-duplicator' in 'docs/man/' for documentations to the CLI utility/script 'de-duplicator'
+        + Added new document 'README.md'
+    - Added new directory 'metasearch' in 'docs/man/' for documentations to the CLI utility/script 'metasearch'
+        + Added new document 'README.md'
+    - Added new directory 'sysenvhndlr' in 'docs/man/' for documentations to the CLI utility/script 'sysenvhndlr'
+        + Added new document 'README.md'
+    - Added new documentation directory 'blob' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'subprocess' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'treelib' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    - Added new documentation directory 'utils' in 'docs/lib/modules/'
+        + Added new document 'README.md'
+    + Added new document 'TODO.md' for TODO list and pipeline
+    + Added new demo animation gif 'documentations-Makefile.gif' in 'resources/demo/gifs'
+
+- Updates
+    - Updated document 'README.md'
+        + Added new notes for documentation
+        + Added new section for demo animation GIFs
+        + Updated version to 'v0.5.0'
+    - Updated document 'USAGE.md'
+        + Migrated documentations to 'docs/'
+        + Updated USAGE file with details to the various locations and acts as a quickstart guide to using the project
+        + Updated header from 'Development' to 'Development and Implementations'
+        - Added new entries to the path to documentations - libraries
+            + blob
+            + subprocess
+            + treelib
+            + utils
+    - Updated document 'demo.md'
+        + Added new demo animation gif 'documentations-Makefile.gif'
+    - Updated Makefile 'documentations.Makefile' in 'docs/'
+        + Moved quotation marks from variable into targets/rules for environment variable setting
+        + Set default value for 'command' variable to ' ' (Empty)
+        + Added new variable 'demo_gif_process_options' for all GIF backend processing to pass into 'asciinema-agg'
+        + Appended 'demo_gif_process_options' to 'asciinema_agg_opts'
+        + Moved quotation marks from variable 'asciinema_options' into targets/rules for environment variable setting
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated version of 'threadexec' to 'v0.1.1'
+        + Updated version of 'treewalk' to 'v0.2.0'
+        + Added new CLI utility/script entries 'sysenvhndlr' and 'metasearch'
+    - Updated document 'README.md' in 'docs/man/treewalk'
+        + Updated Notice/notes
+        + Updated subheader block 'Documentations' with new synopsis/syntax, optionals and usages basing off the changes
+    - Updated document 'README.md' in 'docs/man/threadexec/'
+        + Added system flow
+        + Updated documentations and parameters
+    - Updated python packaging configuration file 'pyproject.toml'
+        - Added CLI executables
+            + metasearch
+            + sysenvhndlr
+        + Updated version to 'v0.5.0'
+    - Updated script 'treetraversal.py' in 'src/pyutils/scripts'
+        + Adding JSON support and multi-standard output format/type (WIP)
+        + Modified JSON export: Each entry is to be an entry in a list instead of an individual key-value mapping for better JSON support and readability
+        + Added CLI argument parsing support
+        + Removed positional argument requirements in favor of moving to the use of CLI argument parsing and optional parameters with a default value set if not specified
+        + Added new flag variable 'verbose' : To enable/disable verbose standard output (will be used with '-V | --verbose'
+        - Added new optional argument variable 'export_format' : To specify the standard output export/print format; Use the '-x | --export-format <format>' argument
+            + Default Value: text
+            + Currently supported:
+                + text : Standard text output
+                + json : Print the dictionary object as a JSON-formatted and parsed string
+        - Added new optional argument variable 'filter' : To explicitly specify the object type to obtain (i.e. files, directories, both); Use the '-f | --filter <filter>' argument
+            + Default Value: all
+            - Currently supported:
+                + all : Search and return all files and (sub)directories found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+                + files : Search and return all files found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+                + directories : Search and return all (sub)directories found in all branches and subbranches within the specified top-level root directory of the tree while traversing
+        - Added new optional argument variable 'search_category' : To explicitly specify a target topic/category to search for; ; Use the '-s | --search-category <category>' argument
+            + Default Value: tree
+            - Currently supported:
+                + tree : Search for generic files and directories found in the specified top-level root directory of the tree
+                + git : Search for git repositories using the existence of a '.git' as an identifier found in the specified top-level root directory of the tree
+        - Added new optional argument variable 'top-level-root-dirs' : To explicitly specify the top-level root directory of the tree to begin traversing; Use the '-t | --top-level-root-dirs <directory-path>'  argument
+    - Updated script 'threadexec.py' in 'src/pyutils/scripts'
+        + Relocated the user input request so that it doesnt collide with the initial input
+        - Added CLI support: Passing all your command strings via the CLI arguments.
+            + Please separate all your command strings with a space delimiter (' ')
+            + TODO: Add CLI positional and optional arguments support
+        + Added new flag variable 'verbose' : To enable/disable verbose standard output (will be used with '-V | --verbose'
+        - Added new optional argument variable 'export_format' : To specify the standard output export/print format
+            + Currently supported:
+                + text : Standard text output
+                + json : Print the dictionary object as a JSON-formatted and parsed string
+        + Added new argument to function 'exec': index
+        - Added new standard output export/printing format: JSON
+            + Store the results in a 'results_mapping' dictionary : An all-in-one dictionary containing the thread and task details
+            + The index of the thread when added is passed into the multithreading function (that will be executed by the processes) as an argument
+            - The results_mapping dictionary will use the passed index as an identifier as to which list to append the subprocess stdout and stderr to
+                + TLDR: Store the results concurrently into the appropriate lists based on the passed index
+    - Updated library 'utils.py' in 'src/pyutils/libraries/'
+        + Added size-related functions
+    - Updated script 'metasearch.py' in 'src/pyutils/scripts'
+        + Removed unused dependencies
+        + Migrated function 'search_metadata()' to 'src/pyutils/libraries/blob.py' with new function name 'search_files_by_metadata()'
+        + Added flag 'remove_empty' to remove all empty elements if enabled
+        + Added new library import 'src/pyutils/libraries/blob.py'
+    - Updated script 'sysenvbufhndlr.py' in 'src/pyutils/scripts'
+        + Removed newlines
+        + Reformatted information strings
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.5
+
 

@@ -4,7 +4,7 @@
 
 ### Documentation Settings
 #### System Command
-command ?= treewalk . all git
+command ?= 
 #### Demo Recording
 demo_recording_output_filename ?= output.cast
 #### Demo GIF
@@ -13,11 +13,12 @@ demo_gif_output_filename ?= output
 demo_gif_output_format ?= gif
 demo_gif_background_theme ?= monokai
 demo_gif_foreground_font ?=
-demo_gif_canvas_size ?= --cols 71 --rows 13
+demo_gif_canvas_size ?= 
 demo_gif_font_size ?= --font-size 16
+demo_gif_process_options ?= --speed 2
 #### Asciinema/agg options
-asciinema_options ?= "--overwrite"
-asciinema_agg_options ?= "$(demo_gif_canvas_size) $(demo_gif_font_size) $(demo_gif_foreground_font)"
+asciinema_options ?= --overwrite
+asciinema_agg_options ?= $(demo_gif_canvas_size) $(demo_gif_font_size) $(demo_gif_foreground_font) $(demo_gif_process_options)
 
 ### System
 SHELL := bash
@@ -35,7 +36,7 @@ record:
 	## Record the demo using asciinema-util (asciinema options)
 	@asciinema-util record \
 		--output-terminal-rec-filename ${demo_recording_output_filename} \
-		--asciinema-opts ${asciinema_options} \
+		--asciinema-opts "${asciinema_options}" \
 		-c "${command}"
 
 convert:
@@ -44,5 +45,5 @@ convert:
 		--theme ${demo_gif_background_theme} \
 		--input-terminal-rec-filename ${demo_gif_input_filename} \
 		--output-animation-filename ${demo_gif_output_filename}.${demo_gif_output_format} \
-		--asciinema-agg-opts ${asciinema_agg_options}
+		--asciinema-agg-opts "${asciinema_agg_options}"
 

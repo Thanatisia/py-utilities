@@ -6,7 +6,7 @@
 + A python one-stop-shop mono-repo containing various useful python utilities, packages/frameworks/libraries that you can just install and use
 
 ### Project
-+ Current Version: v0.4.1
++ Current Version: v0.5.0
 
 ## Setup
 ### Dependencies
@@ -91,11 +91,16 @@
 
 ## Documentations
 
+### Demo
++ Please refer to [demo.md](demo.md) for all demo animation GIFs and examples
+
 ### Generating Demo animation gif
 - Using Makefile
     - Pre-Requisites
     - Optionals
         + Edit the command by prepending with 'command="[new-command-here]""
+    - Notes
+        + Set 'command=""' to enter into terminal session recording for manual shell input, allowing for manual user input
     ```bash
     make -f docs/documentation.gif record convert
     ```

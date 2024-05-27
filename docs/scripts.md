@@ -29,7 +29,7 @@ List of standalone applications
             + Library 'fcntl' not available on Windows
 - threadexec
     - Information
-        + Version: v0.1.0
+        + Version: v0.1.1
     - Supported Platforms/Architecture
         + x86-64 : Tested
     - Supported Operating Systems
@@ -38,7 +38,7 @@ List of standalone applications
             + Debian : Tested
 - treewalk
     - Information
-        + Version: v0.1.1
+        + Version: v0.2.0
     - Supported Platforms/Architecture
         + x86-64 : Tested
     - Supported Operating Systems
@@ -46,6 +46,24 @@ List of standalone applications
             + ArchLinux : Tested
             + Debian : Tested
 - git-mass-update
+    - Information
+        + Version: v0.1.0
+    - Supported Platforms/Architecture
+        + x86-64 : Tested
+    - Supported Operating Systems
+        - Linux
+            + ArchLinux : Tested
+            + Debian : Tested
+- sysenvhndlr
+    - Information
+        + Version: v0.1.0
+    - Supported Platforms/Architecture
+        + x86-64 : Tested
+    - Supported Operating Systems
+        - Linux
+            + ArchLinux : Tested
+            + Debian : Tested
+- metasearch 
     - Information
         + Version: v0.1.0
     - Supported Platforms/Architecture
