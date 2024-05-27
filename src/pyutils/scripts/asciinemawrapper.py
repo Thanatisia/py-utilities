@@ -180,7 +180,7 @@ def init():
     """
     global sys_version, exec, exec_path, exec_name, argv, argc
 
-    sys_version = "v0.1.4"
+    sys_version = "v0.1.5"
     exec = sys.argv[0]
     exec_path = os.path.split(exec)[0]
     exec_name = os.path.split(exec)[1]

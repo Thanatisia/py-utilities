@@ -17,6 +17,7 @@
 + [2024-05-19](#2024-05-19)
 + [2024-05-23](#2024-05-23)
 + [2024-05-26](#2024-05-26)
++ [2024-05-27](#2024-05-27)
 
 ## Logs
 ### 2023-12-21
@@ -824,4 +825,10 @@
             + subprocess
             + treelib
             + utils
+
+### 2024-05-27
+#### 0939H
+- Updates
+    - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
+        + Updated version to v0.1.5
 
