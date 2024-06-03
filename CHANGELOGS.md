@@ -18,6 +18,7 @@
 + [2024-05-23](#2024-05-23)
 + [2024-05-26](#2024-05-26)
 + [2024-05-27](#2024-05-27)
++ [2024-06-03](#2024-06-03)
 
 ## Logs
 ### 2023-12-21
@@ -1039,5 +1040,55 @@
         + Reformatted information strings
     - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
         + Updated version to v0.1.5
+
+### 2024-06-03
+#### 1357H
++ Version: v0.5.1
+
+- Version Changes
+    - Bug Fixes
+    - Additions
+        - Added new submodule directory 'io' in 'src/pyutils/libraries' for I/O Processing-related libraries/modules
+            + Added new module 'files.py' for File I/O Processing and Handling-related functions and utilities
+        - Added new submodule directory 'types' in 'src/pyutils/libraries' for Data Typing-related libraries/modules containing helper wrapper functions
+            + Added new module 'dict.py' for Dictionary-related helper wrapper functions and utiities
+            + Added new module 'list.py' for List-related helper wrapper functions and utiities
+    - Feature Changes
+        - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+            - Migrated functions to 'types/list.py'
+                + sanitizer, find_differences, find_duplicates, order_list, order_lists, remove_duplicates, split_and_replace
+            - Migrated functions to 'types/dict.py'
+                + merge_dictionary, print_dict
+            - Migrated functions to 'io/files.py'
+                + import_file, export_file
+            - Added CLI argument parsing support with Optional and Positionals arguments
+                + Replaced positional arguments-only in favour of enabling/disabling truncation based on an optional argument
+            + Added init() function for pre-initialization control
+            + Added 'display_help()' and 'display_system_version()' system functions
+
+- New
+    - Added new submodule directory 'io' in 'src/pyutils/libraries' for I/O Processing-related libraries/modules
+        + Added new module 'files.py' for File I/O Processing and Handling-related functions and utilities
+    - Added new submodule directory 'types' in 'src/pyutils/libraries' for Data Typing-related libraries/modules containing helper wrapper functions
+        + Added new module 'dict.py' for Dictionary-related helper wrapper functions and utiities
+        + Added new module 'list.py' for List-related helper wrapper functions and utiities
+- Updates
+    - Updated document 'README.md'
+        + Updated package version to 'v0.5.1'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated package version to 'v0.5.1'
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated CLI utility 'de-duplicator' version to 'v0.2.0'
+    - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+        - Migrated functions to 'types/list.py'
+            + sanitizer, find_differences, find_duplicates, order_list, order_lists, remove_duplicates, split_and_replace
+        - Migrated functions to 'types/dict.py'
+            + merge_dictionary, print_dict
+        - Migrated functions to 'io/files.py'
+            + import_file, export_file
+        - Added CLI argument parsing support with Optional and Positionals arguments
+            + Replaced positional arguments-only in favour of enabling/disabling truncation based on an optional argument
+        + Added init() function for pre-initialization control
+        + Added 'display_help()' and 'display_system_version()' system functions
 
 
