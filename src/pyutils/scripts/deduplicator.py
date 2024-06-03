@@ -29,7 +29,13 @@ Help:
 - Optionals
     - With Arguments
         - `-i | --input-file [input-file-name]` : Specify the name of a file to import into the application buffer memory
+            - Options
+                - input-file-name : The name of the target file to import into the application buffer memory
+                    + Type: String
+                    + Default Value: source.txt
         - `-t | --truncate <delimiter|pattern>` : Truncate a given text based on a specified pattern (i.e. family/type/category) of texts (i.e. 'url-links' : remove all search query syntaxes ('?='))
+            - Notes
+                + If a pattern is not specified/invalid, this option will be ignored
             - Values
                 - delimiter : If the text you wish to truncate contains a specific delimiter and you want to keep only the sections before the specified delimiter
                     - Special Delimiter Keywords
@@ -47,11 +53,14 @@ Help:
         + --print-opts-flags : Print all flags (optionals without arguments)
 
 - Usage
-    - Remove duplicates from the list of contents
-        de-duplicate -i [input-file-name] prune
+    - Remove duplicate contents from the default file (source.txt)
+        de-duplicator prune
+
+    - Remove duplicate contents from a custom file
+        de-duplicator -i [input-file-name] prune
 
     - Truncate a list of YouTube URLs (containing search queries) by removing the search query strings, then remove duplicates from the list of contents
-        de-duplicator -i [input-file-name] [-t|--truncate] <url-search-query|'?='> prune
+        de-duplicator [-t|--truncate] <url-search-query|'?='|delimiter> prune
     """.format(exec_name)
     print(msg)
 
@@ -76,7 +85,7 @@ def init():
     """
     global sys_version, exec, exec_path, exec_name, argv, argc, default_filename
 
-    sys_version = "v0.2.1"
+    sys_version = "v0.2.2"
     exec = sys.argv[0]
     exec_path = os.path.split(exec)[0]
     exec_name = os.path.split(exec)[1]
@@ -127,23 +136,35 @@ def get_cli_arguments():
                     curr_key = "input-file-name"
 
                     ## Store the name of the custom file to import
+
+                    ### Get next index
+                    next_idx = i+1
+
                     ### Check if argument is provided
-                    if i+1 < argc:
+                    if next_idx <= (argc-1):
                         # Get argument value
-                        input_filename = argv[i+1]
+                        input_filename = argv[next_idx]
 
                         # Check if input file is specified
                         if input_filename != "":
                             # Input file name is specified
-                            # Check if current keyword exists, and if not = initialize an entry
-                            if not (curr_key in opts["optionals"]["with-arguments"]):
-                                opts["optionals"]["with-arguments"][curr_key] = ""
+                            # Check if file exists
+                            if os.path.isfile(input_filename):
+                                # File exists
+                                # Check if current keyword exists, and if not = initialize an entry
+                                if not (curr_key in opts["optionals"]["with-arguments"]):
+                                    opts["optionals"]["with-arguments"][curr_key] = ""
 
-                            # Populate current keyword entry with value
-                            opts["optionals"]["with-arguments"][curr_key] = input_filename
+                                # Populate current keyword entry with value
+                                opts["optionals"]["with-arguments"][curr_key] = input_filename
 
-                            # Shift 1 position to the left to jump to the next argument
-                            i += 1
+                                # Shift 1 position to the left to jump to the next argument
+                                i += 1
+                            else:
+                                # File does not exist
+                                pprint_warning("Target input file [{}] does not exist. Defaulting to [{}]".format(input_filename, default_filename))
+                                # Map the optional to the default value
+                                opts["optionals"]["with-arguments"][curr_key] = default_filename
                         else:
                             # Map the optional to the default value
                             opts["optionals"]["with-arguments"][curr_key] = default_filename
@@ -156,23 +177,25 @@ def get_cli_arguments():
                     curr_key = "truncate"
 
                     ## Truncate a given text based on a specified pattern/family of texts (i.e. 'url-links' : remove all search query syntaxes ('?='))
+                    ### Get next index
+                    next_idx = i+1
+
                     ### Check if argument is provided
-                    if i+1 < argc:
+                    if next_idx <= (argc-1):
                         # Get argument value
-                        truncate_pattern = argv[i+1]
+                        truncate_pattern = argv[next_idx]
 
-                        if truncate_pattern != "":
-                            # Check if current keyword exists, and if not = initialize an entry
-                            if not (curr_key in opts["optionals"]["with-arguments"]):
-                                opts["optionals"]["with-arguments"][curr_key] = ""
+                        # Check if current keyword exists, and if not = initialize an entry
+                        if not (curr_key in opts["optionals"]["with-arguments"]):
+                            opts["optionals"]["with-arguments"][curr_key] = ""
 
-                            # Populate current keyword entry with value
-                            opts["optionals"]["with-arguments"][curr_key] = truncate_pattern
+                        # Populate current keyword entry with value
+                        opts["optionals"]["with-arguments"][curr_key] = truncate_pattern
 
-                            # Shift 1 position to the left to jump to the next argument
-                            i += 1
+                        # Shift 1 position to the left to jump to the next argument
+                        i += 1
                     else:
-                        pprint_warning("Target truncate pattern")
+                        pprint_warning("Target truncate pattern not provided")
                 #### Flags
                 case "--debug":
                     # Set properties

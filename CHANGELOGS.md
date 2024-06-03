@@ -1119,3 +1119,36 @@
         + Fixed bugs involving writing to text file
         + TODO: Fix order list bugs before re-deployment
 
+#### 1732H
++ Version: v0.5.3
+
+- Version Changes
+    - Feature Changes
+        - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+            + Updated version to 'v0.2.2'
+            + Updated 'display_help()' : Refactored usages and options
+            - Updated 'get_cli_arguments()'
+                + Modified argument value retrieval algorithm to use the next index in a variable for reusability (and reduced CPU clock cycle)
+                + Added a check condition (if applicable) to options with arguments to enable the usage of a default value if the option is specified but a value is invalid
+    - Bug Fixes
+    - Additions
+    - TODO
+        + TODO: Fix order list bugs before re-deployment
+
+- Updates
+    - Updated document 'README.md'
+        + Updated package version to 'v0.5.3'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated package version to 'v0.5.3'
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated CLI utility 'de-duplicator' version to 'v0.2.2'
+    - Updated document 'README.md' in 'docs/man/de-duplicator'
+        + Updated documentation to the latest usage and syntax
+        + Updated usages
+    - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+        + Updated version to 'v0.2.2'
+        + Updated 'display_help()' : Refactored usages and options
+        - Updated 'get_cli_arguments()'
+            + Modified argument value retrieval algorithm to use the next index in a variable for reusability (and reduced CPU clock cycle)
+            + Added a check condition (if applicable) to options with arguments to enable the usage of a default value if the option is specified but a value is invalid
+

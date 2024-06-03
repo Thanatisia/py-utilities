@@ -19,32 +19,57 @@
 ### Synopsis/Syntax
 - Standard
     ```bash
-    de-duplicator {optionals} <arguments> [source-target-file] [dataset-source]
+    de-duplicator {optionals} <arguments> [actions]
     ```
 
 ### Parameters
 - Positionals
-    1. source-target-file : Specify the file name of the target source file containing all your texts which you want to 'unique-fy' by removing the duplicates
-        - Type: String
-    2. dataset-source : Specify the source/type of URLs that is in the dataset, this is used to split and remove unnessary queries from links. Type 'none' to just remove duplicates and not truncate
-        - Sources
-            + yt | youtube : For URLs that uses youtube's domain (i.e. youtube.com/...?=search-queries)
-            + none : Ignore; just remove duplicates and dont truncate/split
-
+    - actions : Specify the action to run
+        - Accepted Values
+            - prune : To 'uniquify'/remove duplicates from a list of contents
 - Optionals
     - With Arguments
-
+        - `-i | --input-file [input-file-name]` : Specify the name of a file to import into the application buffer memory
+            - Options
+                - input-file-name : The name of the target file to import into the application buffer memory
+                    + Type: String
+                    + Default Value: source.txt
+        - `-t | --truncate <delimiter|pattern>` : Truncate a given text based on a specified pattern (i.e. family/type/category) of texts (i.e. 'url-links' : remove all search query syntaxes ('?='))
+            - Notes
+                + If a pattern is not specified/invalid, this option will be ignored
+            - Values
+                - delimiter : If the text you wish to truncate contains a specific delimiter and you want to keep only the sections before the specified delimiter
+                    - Special Delimiter Keywords
+                        - url-search-query : Truncate the URL by removing the search query pattern from the web URL (aka links), if available
+                            + Delimiter/Pattern: ?=
+                            - Notes
+                                + Useful for cleaning up links (such as youtube shortened links where there is a search query appended to the back of the URLs) and keeping web URLs of the same format synchronized
+                - pattern : (WIP) If the list contains contents related to an application/"family" of texts (i.e. General URL links, Youtube Links)
     - Flags
+        + --debug : Set program to 'debug mode'; All commands will be printed out instead
+        + -h | --help : Display help message
+        + -v | --version : Display system version
+        + --print-opts-all : Print all optionals (with arguments and flags)
+        + --print-opts-with-arguments : Print all optionals with arguments
+        + --print-opts-flags : Print all flags (optionals without arguments)
 
 ### Usage
-- Remove duplicates
+- Remove duplicate contents from the default file (source.txt)
     ```bash
-    de-duplicator source.txt none
+    de-duplicator prune
     ```
 
-- Sanitize and truncate all URLs belonging to the domain 'youtube.com' by removing the query subdomain strings ('?=query')
+- Remove duplicate contents from a custom file
     ```bash
-    de-duplicator source.txt yt|youtube
+    de-duplicator -i [input-file-name] prune
+    ```
+
+- Truncate the file contents by removing the provided delimiter/patterns, then remove duplicates from the list of contents
+    - Example Use Cases
+        - youtube URL
+            + Truncating/Sanitizing a list of YouTube URLs (containing search queries) by removing the search query strings (?=)
+    ```bash
+    de-duplicator [-t|--truncate] <url-search-query|'?='|delimiter> prune
     ```
 
 ## TODO
