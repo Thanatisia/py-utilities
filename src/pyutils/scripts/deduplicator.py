@@ -76,7 +76,7 @@ def init():
     """
     global sys_version, exec, exec_path, exec_name, argv, argc, default_filename
 
-    sys_version = "v0.2.0"
+    sys_version = "v0.2.1"
     exec = sys.argv[0]
     exec_path = os.path.split(exec)[0]
     exec_name = os.path.split(exec)[1]
@@ -306,20 +306,7 @@ def main():
                     # Sanitize content list
                     original_file_contents = sanitizer(file_contents)
 
-                    # Remove duplicates
-                    file_contents = remove_duplicates(original_file_contents)
-
-                    # Order the new file contents according to the original
-                    file_contents = order_list(original_file_contents, file_contents)
-
-                    # Check if there are differences after sanitizing and removing unnecessary strings
-                    differences = find_differences(original_file_contents, file_contents)
-                    if len(differences) > 0:
-                        print("There are elements missing:")
-                        for i in range(len(differences)):
-                            print("{} = {}".format(i, differences))
-                    else:
-                        print("No discrepancies found after sanitization.")
+                    pprint_info("Original File Contents: {}".format(original_file_contents))
 
                     # Check if truncation is specified
                     if "truncate" in opt_with_arguments:
@@ -335,14 +322,37 @@ def main():
                                 # Initialize variables
                                 pattern = "?"
 
-                        print("Pattern: {}".format(pattern))
+                        pprint_info("Pattern: {}".format(pattern))
                         # Loop through all URLs and remove the elements after the split
                         rem = split_and_replace(file_contents, pattern)
-                        print("New File Contents: {}".format(file_contents))
 
-                    # Find duplicates that was in the original list
-                    duplicates_removed, duplicates, duplicates_counter = find_duplicates(file_contents)
-                    print("Duplicates Counter: {}".format(duplicates_counter))
+                    # Remove duplicates
+                    file_contents = remove_duplicates(file_contents)
+
+                    # Sanitize content list after pruning and 'uniquifying'
+                    file_contents = sanitizer(file_contents)
+
+                    # Order the new file contents according to the original (TODO: Fix)
+                    # file_contents = order_list(file_contents, original_file_contents)
+
+                    # Check if there are differences (i.e. missing elements) after sanitizing and removing unnecessary strings
+                    differences = find_differences(file_contents, original_file_contents)
+                    if len(differences) > 0:
+                        pprint_warning("There are elements missing:")
+                        for i in range(len(differences)):
+                            # Get current difference
+                            curr_diff = differences[i]
+                            # Print
+                            print("{} = {}".format(i, curr_diff))
+                    else:
+                        pprint_info("No discrepancies found after sanitization.")
+
+                    # Find duplicates that was in the original list, remove from the original list and return the new list
+                    file_contents, duplicates, duplicates_counter = find_duplicates(file_contents)
+                    for k,v in duplicates_counter.items():
+                        pprint_warning("Duplicates [Counter: {}] : {}".format(v, k))
+
+                    pprint_info("New File Contents: {}".format(file_contents))
 
                     # Write new file contents into a file
                     output_file_name = "{}-new{}".format(file_name_without_extension, file_ext)

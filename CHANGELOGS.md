@@ -1091,4 +1091,31 @@
         + Added init() function for pre-initialization control
         + Added 'display_help()' and 'display_system_version()' system functions
 
+#### 1502H
++ Version: v0.5.2
+
+- Version Changes
+    - Feature Changes
+        - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+            + Updated version to 'v0.2.1'
+            + Reorganized 'prune' action to truncate the list of texts before removing duplicates
+    - Bug Fixes
+        - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+            + Fixed bugs involving writing to text file
+    - Additions
+    - TODO
+        + TODO: Fix order list bugs before re-deployment
+
+- Updates
+    - Updated document 'README.md'
+        + Updated package version to 'v0.5.2'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated package version to 'v0.5.2'
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated CLI utility 'de-duplicator' version to 'v0.2.1'
+    - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+        + Updated version to 'v0.2.1'
+        + Reorganized 'prune' action to truncate the list of texts before removing duplicates
+        + Fixed bugs involving writing to text file
+        + TODO: Fix order list bugs before re-deployment
 
