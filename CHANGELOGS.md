@@ -1174,3 +1174,38 @@
         + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
         + Added Usage of 'progressbar()'
 
+#### 2318H
++ Version: v0.5.4
+
+- Version Changes
+    - Feature Changes
+        - Updated library 'utils.py' in 'src/pyutils/libraries/'
+            + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+            + Added Usage of 'progressbar()'
+    - Bug Fixes
+    - Additions
+        - Added new submodule directory 'capi' in 'src/pyutils/libraries/' for C programming API libaries/modules
+            + Added new module 'fs.py': Filesystem and Disk Management module using the C API
+    - TODO
+
+- New
+    - Added new directory 'capi' in 'docs/lib/modules' for documentations on the C programming API libraries
+        - Added new directory 'fs' for documentations on the C programming API Filesystem and Disk Management library
+            + Added new document 'README.md'
+    - Added new submodule directory 'capi' in 'src/pyutils/libraries/' for C programming API libaries/modules
+        + Added new module 'fs.py': Filesystem and Disk Management module using the C API
+    + Added new unit test 'unittest-ctypes.py' in 'tests/' to test 'pyutils.libraries.capi.fs'
+    + Added new unit test 'unittest-utils.py' in 'tests/' to test 'pyutils.libraries.utils'
+
+- Updates
+    - Updated document 'README.md'
+        + Updated package version to 'v0.5.4'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated package version to 'v0.5.4'
+    - Updated documentation 'README.md' in 'docs/lib/modules/utils'
+        + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+        + Added Usage of 'progressbar()'
+    - Updated library 'utils.py' in 'src/pyutils/libraries/'
+        + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+        + Added Usage of 'progressbar()'
+
