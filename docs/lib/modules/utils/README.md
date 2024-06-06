@@ -148,6 +148,23 @@
                         + xGiB => [x, 'GiB']
                         + xM => [x, 'M']
                         + xMiB => [x, 'MiB']
+    - Progress Bar
+        - `.progressbar(tasks, min=0)`: Progress Bar for tracking the execution of a list of multiple tasks (mapped to the arguments) with printing on the same line
+            - Parameter Signature/Header
+                - tasks : Specify a list of dictionaries containing the task function object mapped to the arguments
+                    + Type: List<Dictionary>
+                    - Format
+                        ```python
+                        [
+                            {
+                                "function" : function,
+                                "arguments" : args,
+                            }
+                        ]
+                        ```
+                - min : Specify the lower-bound/minimum value to start the progress bar counting from
+                    + Type: Integer
+                    + Default: 0
 
 ### Attributes/Variables
 
@@ -212,6 +229,26 @@
         if __name__ == "__main__":
             main()
         ```
+
+- Progress Bar
+    ```python
+    tasks:list = [
+        {
+            "function" : os.getenv,
+            "arguments" : ["HOME"]
+        },
+        {
+            "function" : print,
+            "arguments" : ["Hello World"]
+        },
+        {
+            "function" : print,
+            "arguments" : ["Hello World"]
+        },
+    ]
+    res = progressbar_decorator(tasks)
+    print("Results: {}".format(res))
+    ```
 
 ## Wiki
 

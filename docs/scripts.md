@@ -11,7 +11,7 @@ List of standalone applications
         + Status: Work-in-Progress
 - de-duplicator
     - Information
-        + Version: v0.1.0
+        + Version: v0.2.2
 - asciinema-util
     - Information
         + Version: v0.1.5

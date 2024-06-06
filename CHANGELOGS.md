@@ -18,6 +18,8 @@
 + [2024-05-23](#2024-05-23)
 + [2024-05-26](#2024-05-26)
 + [2024-05-27](#2024-05-27)
++ [2024-06-03](#2024-06-03)
++ [2024-06-06](#2024-06-06)
 
 ## Logs
 ### 2023-12-21
@@ -1040,4 +1042,170 @@
     - Updated script 'asciinemawrapper.py' in 'src/pyutils/scripts'
         + Updated version to v0.1.5
 
+### 2024-06-03
+#### 1357H
++ Version: v0.5.1
+
+- Version Changes
+    - Bug Fixes
+    - Additions
+        - Added new submodule directory 'io' in 'src/pyutils/libraries' for I/O Processing-related libraries/modules
+            + Added new module 'files.py' for File I/O Processing and Handling-related functions and utilities
+        - Added new submodule directory 'types' in 'src/pyutils/libraries' for Data Typing-related libraries/modules containing helper wrapper functions
+            + Added new module 'dict.py' for Dictionary-related helper wrapper functions and utiities
+            + Added new module 'list.py' for List-related helper wrapper functions and utiities
+    - Feature Changes
+        - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+            - Migrated functions to 'types/list.py'
+                + sanitizer, find_differences, find_duplicates, order_list, order_lists, remove_duplicates, split_and_replace
+            - Migrated functions to 'types/dict.py'
+                + merge_dictionary, print_dict
+            - Migrated functions to 'io/files.py'
+                + import_file, export_file
+            - Added CLI argument parsing support with Optional and Positionals arguments
+                + Replaced positional arguments-only in favour of enabling/disabling truncation based on an optional argument
+            + Added init() function for pre-initialization control
+            + Added 'display_help()' and 'display_system_version()' system functions
+
+- New
+    - Added new submodule directory 'io' in 'src/pyutils/libraries' for I/O Processing-related libraries/modules
+        + Added new module 'files.py' for File I/O Processing and Handling-related functions and utilities
+    - Added new submodule directory 'types' in 'src/pyutils/libraries' for Data Typing-related libraries/modules containing helper wrapper functions
+        + Added new module 'dict.py' for Dictionary-related helper wrapper functions and utiities
+        + Added new module 'list.py' for List-related helper wrapper functions and utiities
+- Updates
+    - Updated document 'README.md'
+        + Updated package version to 'v0.5.1'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated package version to 'v0.5.1'
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated CLI utility 'de-duplicator' version to 'v0.2.0'
+    - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+        - Migrated functions to 'types/list.py'
+            + sanitizer, find_differences, find_duplicates, order_list, order_lists, remove_duplicates, split_and_replace
+        - Migrated functions to 'types/dict.py'
+            + merge_dictionary, print_dict
+        - Migrated functions to 'io/files.py'
+            + import_file, export_file
+        - Added CLI argument parsing support with Optional and Positionals arguments
+            + Replaced positional arguments-only in favour of enabling/disabling truncation based on an optional argument
+        + Added init() function for pre-initialization control
+        + Added 'display_help()' and 'display_system_version()' system functions
+
+#### 1502H
++ Version: v0.5.2
+
+- Version Changes
+    - Feature Changes
+        - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+            + Updated version to 'v0.2.1'
+            + Reorganized 'prune' action to truncate the list of texts before removing duplicates
+    - Bug Fixes
+        - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+            + Fixed bugs involving writing to text file
+    - Additions
+    - TODO
+        + TODO: Fix order list bugs before re-deployment
+
+- Updates
+    - Updated document 'README.md'
+        + Updated package version to 'v0.5.2'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated package version to 'v0.5.2'
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated CLI utility 'de-duplicator' version to 'v0.2.1'
+    - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+        + Updated version to 'v0.2.1'
+        + Reorganized 'prune' action to truncate the list of texts before removing duplicates
+        + Fixed bugs involving writing to text file
+        + TODO: Fix order list bugs before re-deployment
+
+#### 1732H
++ Version: v0.5.3
+
+- Version Changes
+    - Feature Changes
+        - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+            + Updated version to 'v0.2.2'
+            + Updated 'display_help()' : Refactored usages and options
+            - Updated 'get_cli_arguments()'
+                + Modified argument value retrieval algorithm to use the next index in a variable for reusability (and reduced CPU clock cycle)
+                + Added a check condition (if applicable) to options with arguments to enable the usage of a default value if the option is specified but a value is invalid
+    - Bug Fixes
+    - Additions
+    - TODO
+        + TODO: Fix order list bugs before re-deployment
+
+- Updates
+    - Updated document 'README.md'
+        + Updated package version to 'v0.5.3'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated package version to 'v0.5.3'
+    - Updated document 'scripts.md' in 'docs/'
+        + Updated CLI utility 'de-duplicator' version to 'v0.2.2'
+    - Updated document 'README.md' in 'docs/man/de-duplicator'
+        + Updated documentation to the latest usage and syntax
+        + Updated usages
+    - Updated CLI utility script 'deduplicator.py' in 'src/pyutils/scripts/'
+        + Updated version to 'v0.2.2'
+        + Updated 'display_help()' : Refactored usages and options
+        - Updated 'get_cli_arguments()'
+            + Modified argument value retrieval algorithm to use the next index in a variable for reusability (and reduced CPU clock cycle)
+            + Added a check condition (if applicable) to options with arguments to enable the usage of a default value if the option is specified but a value is invalid
+
+### 2024-06-06
+#### 2206H
+- New
+    - Addded new directory 'capi' in 'docs/lib/modules' for documentations on the C programming API libraries
+        - Added new directory 'fs' for documentations on the C programming API Filesystem and Disk Management library
+            + Added new document 'README.md'
+    - Added new submodule directory 'capi' in 'src/pyutils/libraries/' for C programming API libaries/modules
+        + Added new module 'fs.py': Filesystem and Disk Management module using the C API
+    + Added new unit test 'unittest-ctypes.py' in 'tests/' to test 'pyutils.libraries.capi.fs'
+
+#### 2301H
+- New
+    + Added new unit test 'unittest-utils.py' in 'tests/' to test 'pyutils.libraries.utils'
+- Updates
+    - Updated documentation 'README.md' in 'docs/lib/modules/utils'
+        + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+        + Added Usage of 'progressbar()'
+    - Updated library 'utils.py' in 'src/pyutils/libraries/'
+        + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+        + Added Usage of 'progressbar()'
+
+#### 2318H
++ Version: v0.5.4
+
+- Version Changes
+    - Feature Changes
+        - Updated library 'utils.py' in 'src/pyutils/libraries/'
+            + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+            + Added Usage of 'progressbar()'
+    - Bug Fixes
+    - Additions
+        - Added new submodule directory 'capi' in 'src/pyutils/libraries/' for C programming API libaries/modules
+            + Added new module 'fs.py': Filesystem and Disk Management module using the C API
+    - TODO
+
+- New
+    - Added new directory 'capi' in 'docs/lib/modules' for documentations on the C programming API libraries
+        - Added new directory 'fs' for documentations on the C programming API Filesystem and Disk Management library
+            + Added new document 'README.md'
+    - Added new submodule directory 'capi' in 'src/pyutils/libraries/' for C programming API libaries/modules
+        + Added new module 'fs.py': Filesystem and Disk Management module using the C API
+    + Added new unit test 'unittest-ctypes.py' in 'tests/' to test 'pyutils.libraries.capi.fs'
+    + Added new unit test 'unittest-utils.py' in 'tests/' to test 'pyutils.libraries.utils'
+
+- Updates
+    - Updated document 'README.md'
+        + Updated package version to 'v0.5.4'
+    - Updated python packaging configuration file 'pyproject.toml'
+        + Updated package version to 'v0.5.4'
+    - Updated documentation 'README.md' in 'docs/lib/modules/utils'
+        + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+        + Added Usage of 'progressbar()'
+    - Updated library 'utils.py' in 'src/pyutils/libraries/'
+        + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+        + Added Usage of 'progressbar()'
 

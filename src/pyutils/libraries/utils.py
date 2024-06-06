@@ -3,6 +3,7 @@ Functions and utilities for adding information of various types (debugging, pret
 """
 import os
 import sys
+import time
 
 """
 FUNCTIONS : Pretty Print
@@ -303,4 +304,72 @@ def split_size_suffix(size_str):
 
     # Return
     return [filter_size, filter_suffix]
+
+def progressbar(tasks, min=0):
+    """
+    Progress Bar for tracking the execution of a list of multiple tasks (mapped to the arguments)
+    with printing on the same line
+
+    :: Params
+    - tasks : Specify a list of dictionaries containing the task function object mapped to the arguments
+        Type: List<Dictionary>
+        [
+            {
+                "function" : function,
+                "arguments" : args,
+            }
+        ]
+    """
+    # Initialize Variable
+    starting_icon = "|"
+    pointer = ">"
+    inc = 1
+    perc = 0.0
+    progress = starting_icon
+    number_of_tasks = len(tasks)
+    results = []
+
+    # Initiate while loop and iterate while progress bar is active
+    i = min
+    print(progress, end="\r")
+    while i < number_of_tasks:
+        # Calculate percentage
+        perc = (i / number_of_tasks) * 100
+
+        # Get current task
+        curr_task = tasks[i]
+
+        # Get current function
+        curr_fn = curr_task["function"]
+
+        # Get current arguments
+        curr_argv = curr_task["arguments"]
+
+        # Execute tasks
+        res = curr_fn(*curr_argv)
+
+        # Initialize a dictionary for current command
+        curr_cmd_res = {
+            "command" : curr_fn,
+            "arguments" : curr_argv,
+            "result" : res
+        }
+
+        # Append into results list
+        results.append(curr_cmd_res)
+
+        # Increment counter by 1
+        i += inc
+
+        # Append 1 pointer to the progress bar
+        progress += pointer
+
+        # Print percentage
+        print("{}{} ({}%)".format(progress, starting_icon, perc), end="\r")
+
+        # Sleep for 1 second
+        time.sleep(1)
+
+    # Output/Return decorator
+    return results
 
