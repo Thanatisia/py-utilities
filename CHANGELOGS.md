@@ -19,6 +19,7 @@
 + [2024-05-26](#2024-05-26)
 + [2024-05-27](#2024-05-27)
 + [2024-06-03](#2024-06-03)
++ [2024-06-06](#2024-06-06)
 
 ## Logs
 ### 2023-12-21
@@ -1151,4 +1152,14 @@
         - Updated 'get_cli_arguments()'
             + Modified argument value retrieval algorithm to use the next index in a variable for reusability (and reduced CPU clock cycle)
             + Added a check condition (if applicable) to options with arguments to enable the usage of a default value if the option is specified but a value is invalid
+
+### 2024-06-06
+#### 2206H
+- New
+    - Addded new directory 'capi' in 'docs/lib/modules' for documentations on the C programming API libraries
+        - Added new directory 'fs' for documentations on the C programming API Filesystem and Disk Management library
+            + Added new document 'README.md'
+    - Added new submodule directory 'capi' in 'src/pyutils/libraries/' for C programming API libaries/modules
+        + Added new module 'fs.py': Filesystem and Disk Management module using the C API
+    + Added new unit test 'unittest-ctypes.py' in 'tests/' to test 'pyutils.libraries.capi.fs'
 
