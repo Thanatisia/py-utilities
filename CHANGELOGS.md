@@ -1163,3 +1163,14 @@
         + Added new module 'fs.py': Filesystem and Disk Management module using the C API
     + Added new unit test 'unittest-ctypes.py' in 'tests/' to test 'pyutils.libraries.capi.fs'
 
+#### 2301H
+- New
+    + Added new unit test 'unittest-utils.py' in 'tests/' to test 'pyutils.libraries.utils'
+- Updates
+    - Updated documentation 'README.md' in 'docs/lib/modules/utils'
+        + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+        + Added Usage of 'progressbar()'
+    - Updated library 'utils.py' in 'src/pyutils/libraries/'
+        + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
+        + Added Usage of 'progressbar()'
+
