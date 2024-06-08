@@ -20,6 +20,7 @@
 + [2024-05-27](#2024-05-27)
 + [2024-06-03](#2024-06-03)
 + [2024-06-06](#2024-06-06)
++ [2024-06-08](#2024-06-08)
 
 ## Logs
 ### 2023-12-21
@@ -1208,4 +1209,12 @@
     - Updated library 'utils.py' in 'src/pyutils/libraries/'
         + Added new function 'progressbar()' : Executes a list of tasks and tracks them in a progress bar
         + Added Usage of 'progressbar()'
+
+### 2024-06-08
+#### 2313H
+- New
+    + Added new unit test 'unittest-types.py' in 'tests/' to test 'pyutils.libraries.types'
+- Updates
+    - Updated module 'dict.py' in 'src/pyutils/libraries/types'
+        + Added new function 'key_lookup()'
 
